@@ -35,7 +35,45 @@ export default function BatchList() {
           </Link>
         </div>
 
-        <div className="rounded-xl border border-border bg-card overflow-hidden">
+        {/* Mobile View */}
+        <div className="md:hidden space-y-4">
+          {batches.map((batch) => (
+            <div key={batch.id} className="rounded-xl border border-border bg-card p-4 space-y-3">
+              <div className="flex items-start justify-between">
+                <div>
+                  <h3 className="font-semibold text-card-foreground">{batch.productType}</h3>
+                  <p className="text-xs text-muted-foreground font-mono mt-1">{batch.id}</p>
+                </div>
+                <StatusBadge status={batch.status} />
+              </div>
+
+              <div className="grid grid-cols-2 gap-2 text-sm">
+                <div>
+                  <span className="text-muted-foreground block text-xs">{t('quantity')}</span>
+                  <span>{batch.quantity}</span>
+                </div>
+                <div>
+                  <span className="text-muted-foreground block text-xs">{t('destination')}</span>
+                  <span>{batch.destinationCountry}</span>
+                </div>
+              </div>
+
+              <div className="pt-3 border-t border-border flex items-center justify-between">
+                <span className="text-xs text-muted-foreground">{new Date(batch.submittedAt).toLocaleDateString()}</span>
+                <div className="flex items-center gap-1">
+                  <Link to={`/exporter/batches/${batch.id}`}>
+                    <Button variant="outline" size="sm" className="h-8">
+                      <Eye className="h-3.5 w-3.5 mr-1" /> View
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop View */}
+        <div className="hidden md:block rounded-xl border border-border bg-card overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead className="bg-muted/50">
@@ -69,7 +107,7 @@ export default function BatchList() {
                             <Eye className="h-4 w-4" />
                           </Button>
                         </Link>
-                        {batch.status === 'submitted' && (
+                        {batch.status === 'SUBMITTED' && (
                           <>
                             <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
                               <Edit className="h-4 w-4" />

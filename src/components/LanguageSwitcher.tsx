@@ -15,6 +15,11 @@ export function LanguageSwitcher() {
     { code: 'en' as const, label: 'EN', fullName: 'English' },
     { code: 'hi' as const, label: 'हिंदी', fullName: 'Hindi' },
     { code: 'ta' as const, label: 'தமிழ்', fullName: 'Tamil' },
+    { code: 'fr' as const, label: 'FR', fullName: 'Français' },
+    { code: 'ar' as const, label: 'AR', fullName: 'العربية' },
+    { code: 'es' as const, label: 'ES', fullName: 'Español' },
+    { code: 'si' as const, label: 'SI', fullName: 'සිංහල' },
+    { code: 'pt' as const, label: 'PT', fullName: 'Português' },
   ];
 
   const currentLang = languages.find(l => l.code === language);

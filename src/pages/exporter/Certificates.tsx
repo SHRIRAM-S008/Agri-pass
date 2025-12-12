@@ -75,49 +75,92 @@ export default function Certificates() {
               <CardTitle>{t('issuedCertificates')}</CardTitle>
             </CardHeader>
             <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>{t('certificateId')}</TableHead>
-                    <TableHead>{t('product')}</TableHead>
-                    <TableHead>{t('issuedDate')}</TableHead>
-                    <TableHead>{t('validUntil')}</TableHead>
-                    <TableHead>{t('status')}</TableHead>
-                    <TableHead>{t('actions')}</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {certificates.map(cert => {
-                    const batch = batches.find(b => b.id === cert.batchId);
-                    return (
-                      <TableRow key={cert.id}>
-                        <TableCell className="font-mono text-sm">{cert.id}</TableCell>
-                        <TableCell>{batch?.productType || 'N/A'}</TableCell>
-                        <TableCell>{new Date(cert.issuedAt).toLocaleDateString()}</TableCell>
-                        <TableCell>{new Date(cert.validUntil).toLocaleDateString()}</TableCell>
-                        <TableCell>
-                          <StatusBadge status={cert.status === 'VALID' ? 'certified' : 'rejected'} />
-                        </TableCell>
-                        <TableCell>
-                          <div className="flex gap-2">
-                            <Link to={`/exporter/certificate/${cert.id}`}>
+              {/* Mobile View */}
+              <div className="md:hidden space-y-4">
+                {certificates.map(cert => {
+                  const batch = batches.find(b => b.id === cert.batchId);
+                  return (
+                    <div key={cert.id} className="rounded-lg border border-border p-4 space-y-3">
+                      <div className="flex items-start justify-between">
+                        <div className="min-w-0">
+                          <h4 className="font-semibold truncate">{batch?.productType || 'Unknown'}</h4>
+                          <p className="text-xs text-muted-foreground font-mono truncate">{cert.id}</p>
+                        </div>
+                        <StatusBadge status={cert.status === 'VALID' ? 'certified' : 'rejected'} />
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-2 text-xs text-muted-foreground">
+                        <div>
+                          <span className="block mb-0.5">{t('issuedDate')}</span>
+                          <span className="text-foreground">{new Date(cert.issuedAt).toLocaleDateString()}</span>
+                        </div>
+                        <div>
+                          <span className="block mb-0.5">{t('validUntil')}</span>
+                          <span className="text-foreground">{new Date(cert.validUntil).toLocaleDateString()}</span>
+                        </div>
+                      </div>
+
+                      <div className="flex gap-2 pt-2 border-t border-border">
+                        <Link to={`/exporter/certificate/${cert.id}`} className="flex-1">
+                          <Button variant="outline" size="sm" className="w-full h-8">
+                            <Eye className="h-3.5 w-3.5 mr-2" /> View
+                          </Button>
+                        </Link>
+                        <Button variant="outline" size="sm" className="h-8 w-8 p-0">
+                          <Download className="h-3.5 w-3.5" />
+                        </Button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Desktop View */}
+              <div className="hidden md:block">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>{t('certificateId')}</TableHead>
+                      <TableHead>{t('product')}</TableHead>
+                      <TableHead>{t('issuedDate')}</TableHead>
+                      <TableHead>{t('validUntil')}</TableHead>
+                      <TableHead>{t('status')}</TableHead>
+                      <TableHead>{t('actions')}</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {certificates.map(cert => {
+                      const batch = batches.find(b => b.id === cert.batchId);
+                      return (
+                        <TableRow key={cert.id}>
+                          <TableCell className="font-mono text-sm">{cert.id}</TableCell>
+                          <TableCell>{batch?.productType || 'N/A'}</TableCell>
+                          <TableCell>{new Date(cert.issuedAt).toLocaleDateString()}</TableCell>
+                          <TableCell>{new Date(cert.validUntil).toLocaleDateString()}</TableCell>
+                          <TableCell>
+                            <StatusBadge status={cert.status === 'VALID' ? 'certified' : 'rejected'} />
+                          </TableCell>
+                          <TableCell>
+                            <div className="flex gap-2">
+                              <Link to={`/exporter/certificate/${cert.id}`}>
+                                <Button variant="ghost" size="sm">
+                                  <Eye className="h-4 w-4" />
+                                </Button>
+                              </Link>
                               <Button variant="ghost" size="sm">
-                                <Eye className="h-4 w-4" />
+                                <QrCode className="h-4 w-4" />
                               </Button>
-                            </Link>
-                            <Button variant="ghost" size="sm">
-                              <QrCode className="h-4 w-4" />
-                            </Button>
-                            <Button variant="ghost" size="sm">
-                              <Download className="h-4 w-4" />
-                            </Button>
-                          </div>
-                        </TableCell>
-                      </TableRow>
-                    );
-                  })}
-                </TableBody>
-              </Table>
+                              <Button variant="ghost" size="sm">
+                                <Download className="h-4 w-4" />
+                              </Button>
+                            </div>
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
+                  </TableBody>
+                </Table>
+              </div>
             </CardContent>
           </Card>
         )}

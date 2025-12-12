@@ -4,7 +4,6 @@ export type Language = 'en' | 'hi' | 'ta' | 'fr' | 'ar' | 'es' | 'si' | 'pt';
 
 export const translations = {
   en: {
-    // Common
     dashboard: 'Dashboard',
     submit: 'Submit',
     cancel: 'Cancel',
@@ -598,13 +597,9 @@ export const translations = {
     auditLogs: 'தணிக்கை பதிவுகள்',
     systemSettings: 'கணினி அமைப்புகள்',
     quickActions: 'விரைவு செயல்கள்',
-
-    // History
     history: 'வரலாறு',
     verificationHistory: 'சரிபார்ப்பு வரலாறு',
     viewHistory: 'வரலாறு காண்க',
-
-    // Form
     selectProduct: 'தயாரிப்பு வகையை தேர்ந்தெடு',
     enterQuantity: 'அளவை உள்ளிடவும்',
     selectOrigin: 'தோற்ற மாநிலத்தை தேர்ந்தெடு',
@@ -614,8 +609,6 @@ export const translations = {
     dragAndDrop: 'இழுத்து விடவும் அல்லது பதிவேற்ற கிளிக் செய்யவும்',
     submitting: 'சமர்ப்பிக்கிறது...',
     batchSubmittedSuccess: 'தொகுதி வெற்றிகரமாக சமர்ப்பிக்கப்பட்டது!',
-
-    // Misc
     downloadReport: 'அறிக்கை பதிவிறக்கு',
     awaitingInspection: 'ஆய்வுக்கு காத்திருக்கிறது',
     awaitingReview: 'மதிப்பாய்வுக்கு காத்திருக்கிறது',
@@ -625,7 +618,6 @@ export const translations = {
     name: 'பெயர்',
   },
   fr: {
-    // Common
     dashboard: 'Tableau de bord',
     submit: 'Soumettre',
     cancel: 'Annuler',

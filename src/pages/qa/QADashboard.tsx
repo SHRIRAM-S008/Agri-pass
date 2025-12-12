@@ -90,9 +90,9 @@ export default function QADashboard() {
               ) : (
                 pendingBatches.map((batch) => (
                   <div key={batch.id} className="flex flex-col sm:flex-row sm:items-center justify-between p-3 sm:p-4 rounded-lg bg-muted/50 gap-3">
-                    <div>
-                      <p className="font-medium text-card-foreground">{batch.productType}</p>
-                      <p className="text-xs sm:text-sm text-muted-foreground">{batch.exporterName} · {batch.id}</p>
+                    <div className="min-w-0 flex-1">
+                      <p className="font-medium text-card-foreground truncate">{batch.productType}</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground truncate">{batch.exporterName} · {batch.id}</p>
                     </div>
                     <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
                       <StatusBadge status={batch.status} />
@@ -119,9 +119,9 @@ export default function QADashboard() {
               ) : (
                 recentInspections.map((batch) => (
                   <div key={batch.id} className="flex flex-col sm:flex-row sm:items-center justify-between p-3 sm:p-4 rounded-lg bg-muted/50 gap-3">
-                    <div>
-                      <p className="font-medium text-card-foreground">{batch.id}</p>
-                      <p className="text-xs sm:text-sm text-muted-foreground">{t('batch')}: {batch.id}</p>
+                    <div className="min-w-0 flex-1">
+                      <p className="font-medium text-card-foreground truncate">{batch.id}</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground truncate">{t('batch')}: {batch.id}</p>
                     </div>
                     <div className="flex items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
                       <StatusBadge status={batch.status} />

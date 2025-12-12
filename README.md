@@ -1,170 +1,106 @@
-# AgriQCert - Agricultural Quality Certification Platform
+# AgriQCert - Digital Quality Certification Platform
 
-**Digital Product Passports powered by MOSIP Inji & W3C Verifiable Credentials**
+**A Next-Generation Web Platform for Agricultural Supply Chain Transparency**
 
-## 🌾 Overview
+AgriQCert is a comprehensive web application designed to digitize the agricultural quality certification process. By leveraging **MOSIP Inji Certify** and **W3C Verifiable Credentials**, it creates a tamper-proof bridge between exporters, quality assurance agencies, and importers.
 
-AgriQCert is a blockchain-based quality certification platform for agricultural exports. It enables exporters, QA agencies, and importers to issue, manage, and verify tamper-proof Digital Product Passports using **MOSIP Inji Certify** and **W3C Verifiable Credentials**.
+## 🌟 Website Overview
 
-### Key Features
+AgriQCert is built as a modern, responsive Progressive Web App (PWA) that provides a seamless experience across desktop and mobile devices. The platform features role-based access control, ensuring that each stakeholder has a tailored dashboard to manage their specific tasks in the supply chain.
 
-- ✅ **Inji Certify Integration** - Issue cryptographically signed VCs
-- 📱 **Mobile Wallet Support** - Compatible with Inji Wallet & Inji Verify apps
-- 🔒 **Tamper Detection** - SHA-256 hashing for integrity verification
-- 📄 **PDF Export** - Professional certificates with embedded QR codes
-- 🌐 **Multi-language** - Support for English, Hindi, Tamil, French, Arabic, Spanish, Sinhala, Portuguese
-- 📊 **Real-time Analytics** - Dashboard for all stakeholders
-- 🔍 **Offline Verification** - PixelPass encoding for QR codes
+### 🎨 Key Website Features
 
----
-
-## 🚀 Quick Start
-
-### Option 1: Automated Setup (Recommended)
-
-```bash
-# Clone the repository
-git clone <YOUR_GIT_URL>
-cd agri-pass-main
-
-# Run quick-start script (starts Inji Certify + app)
-./quick-start.sh
-```
-
-### Option 2: Manual Setup
-
-```bash
-# 1. Start Inji Certify
-docker-compose up -d inji-certify
-
-# 2. Install dependencies
-npm install
-
-# 3. Configure environment
-cp .env.example .env.local
-# Edit .env.local with your Supabase credentials
-
-# 4. Run the app
-npm run dev
-```
-
-The app will be available at `http://localhost:5173`
+- **Role-Based Dashboards**: tailored interfaces for Exporters, QA Agencies, Importers, and Administrators.
+- **📱 Fully Responsive Design**: 
+  - Optimized for mobile, tablet, and desktop views.
+  - **Mobile-First Experience**: Touch-friendly navigation, card-based data views for smaller screens, and non-intrusive menus.
+- **🌍 Multi-Language Support**: Complete localization in 8 languages:
+  - English, Hindi, Tamil, French, Arabic, Spanish, Sinhala, Portuguese.
+- **🔐 Secure Authentication**: Role-based login with secure session management.
+- **⚡ Progressive Web App (PWA)**: Installable on devices, ensuring performance even on slow networks.
 
 ---
 
-## 📚 Documentation
+## � Stakeholder Portals
 
-- **[INJI_INTEGRATION.md](./INJI_INTEGRATION.md)** - Complete Inji integration guide
-- **[DEMO_CHECKLIST.md](./DEMO_CHECKLIST.md)** - Hackathon demo script & checklist
-- **[supabase_schema.sql](./supabase_schema.sql)** - Database schema
+### 1. Exporter Portal
+*Designed for ease of submission and tracking.*
+- **Submit Batches**: Easy-to-use forms to submit new agricultural batches for inspection.
+- **Track Status**: Real-time timeline view of batch progress (Submitted → Inspecting → Certified).
+- **Manage Certificates**: View and download issued digital certificates (PDF & JSON VC).
+- **Mobile Access**: Check status and show QR codes directly from a mobile device while in the field.
 
----
+### 2. QA Agency Portal
+*Tools for inspectors to validate quality.*
+- **Inspection Managment**: Receive and process inspection requests in real-time.
+- **Digital grading**: Input grading results (Moisture, Pesticides, Heavy Metals) directly into digital forms.
+- **Instant Issuance**: One-click generation of cryptographically signed Verifiable Credentials via Inji Certify.
 
-## 🏗️ Tech Stack
+### 3. Importer / Verification Portal
+*Trust but verify.*
+- **Universal Scanner**: Built-in QR scanner compatible with AgriQCert certificates.
+- **Offline Verification**: Verify simplified certificates even without an internet connection using PixelPass technology.
+- **Detailed Reports**: View comprehensive provenance data, inspection results, and issuer details.
 
-- **Frontend:** Vite + React + TypeScript
-- **UI:** shadcn-ui + Tailwind CSS
-- **Backend:** Supabase (PostgreSQL)
-- **VC Issuance:** MOSIP Inji Certify
-- **VC Verification:** Inji Verify API
-- **QR Encoding:** PixelPass (CBOR + Zlib + Base45)
-- **PDF Generation:** jsPDF
-- **Deployment:** Netlify
-
----
-
-## 🎯 User Flows
-
-### Exporter
-1. Submit batch for inspection
-2. View inspection results
-3. Download certificate with QR code
-4. Share with importers
-
-### QA Officer
-1. Review inspection requests
-2. Conduct quality inspection
-3. **Issue Digital Product Passport via Inji Certify**
-4. Manage certificates
-
-### Importer
-1. Scan QR code with Inji Wallet/Verify
-2. Verify certificate authenticity
-3. View product details & inspection results
-4. Download verification report
+### 4. Admin Portal
+*System oversight.*
+- **User Management**: onboard and manage organization access.
+- **Analytics**: System-wide statistics on batches, certifications, and revocations.
 
 ---
 
-## 🔧 Environment Variables
+## 🏗️ Technology Stack
 
-```bash
-# Supabase
-VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your_anon_key
+**Frontend**
+- **Framework**: React 18 + Vite (High performance)
+- **Styling**: Tailwind CSS + Shadcn UI (Modern, accessible design components)
+- **Languages**: TypeScript (Type safety)
 
-# Inji Integration
-VITE_INJI_CERTIFY_URL=http://localhost:8080
-VITE_INJI_VERIFY_URL=https://verify.inji.io/verify
-```
-
----
-
-## 📱 Mobile Apps
-
-- **Inji Wallet** - Store VCs: [iOS](https://apps.apple.com/in/app/inji/id6448640428) | [Android](https://play.google.com/store/apps/details?id=io.mosip.residentapp)
-- **Inji Verify** - Verify VCs: [iOS](https://apps.apple.com/in/app/inji-verify/id6475072371) | [Android](https://play.google.com/store/apps/details?id=inji.verify)
+**Backend & Services**
+- **Database**: Supabase (PostgreSQL)
+- **Identity & VC**: MOSIP Inji Certify
+- **Deployment**: Netlify / Vercel
 
 ---
 
-## 🧪 Testing
+## 🚀 Getting Started
 
-```bash
-# Run linter
-npm run lint
+### Prerequisites
+- Node.js (v18+)
+- Docker (for local Inji Certify instance)
 
-# Build for production
-npm run build
+### Installation
 
-# Preview production build
-npm run preview
-```
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/agri-pass.git
+   cd agri-pass-main
+   ```
+
+2. **Install Dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Environment Setup**
+   ```bash
+   cp .env.example .env.local
+   # Update .env.local with your Supabase and Inji credentials
+   ```
+
+4. **Run Locally**
+   ```bash
+   npm run dev
+   ```
+   The application will launch at `http://localhost:5173`
 
 ---
 
-## 🚢 Deployment
-
-### Netlify (Recommended)
-
-1. Connect your GitHub repo to Netlify
-2. Set environment variables in Netlify dashboard
-3. Deploy!
-
-Or use the Lovable platform:
-
-Simply open [Lovable](https://lovable.dev/projects/213a2d91-cf52-425e-b34f-49e3b68586a4) and click on Share → Publish.
-
----
+## � Mobile features
+The website is designed to feel like a native app on mobile devices:
+- **Bottom Navigation**: Easy thumb-reach navigation on mobile.
+- **Card Views**: Complex data tables automatically transform into readable cards on mobile screens.
+- **No Horizontal Scroll**: Layouts adapt perfectly to any screen width.
 
 ## 📄 License
-
-MIT License - See LICENSE file for details
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please read our contributing guidelines first.
-
----
-
-## 📞 Support
-
-For issues or questions:
-- Check [INJI_INTEGRATION.md](./INJI_INTEGRATION.md) troubleshooting section
-- Open an issue on GitHub
-- Contact: [your-email@example.com]
-
----
-
-**Built with ❤️ for sustainable agriculture and global trade**
-
+MIT License. Built for the future of sustainable trade.

@@ -79,10 +79,10 @@ export default function AdminDashboard() {
                 <p className="text-sm text-muted-foreground text-center py-4">{t('noData')}</p>
               ) : (
                 batches.slice(0, 4).map((batch) => (
-                  <div key={batch.id} className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
-                    <div>
-                      <p className="font-medium text-card-foreground">{batch.id}</p>
-                      <p className="text-sm text-muted-foreground">{batch.exporterName}</p>
+                  <div key={batch.id} className="flex items-center justify-between p-3 rounded-lg bg-muted/50 gap-2">
+                    <div className="min-w-0 flex-1">
+                      <p className="font-medium text-card-foreground truncate">{batch.id}</p>
+                      <p className="text-sm text-muted-foreground truncate">{batch.exporterName}</p>
                     </div>
                     <StatusBadge status={batch.status} />
                   </div>
@@ -105,10 +105,10 @@ export default function AdminDashboard() {
                 recentCertificates.map((cert) => {
                   const batch = batches.find(b => b.id === cert.batchId);
                   return (
-                    <div key={cert.id} className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
-                      <div>
-                        <p className="font-medium text-card-foreground">{cert.id}</p>
-                        <p className="text-sm text-muted-foreground">{batch?.productType || 'Unknown'} · {batch?.exporterName || 'Unknown'}</p>
+                    <div key={cert.id} className="flex items-center justify-between p-3 rounded-lg bg-muted/50 gap-2">
+                      <div className="min-w-0 flex-1">
+                        <p className="font-medium text-card-foreground truncate">{cert.id}</p>
+                        <p className="text-sm text-muted-foreground truncate">{batch?.productType || 'Unknown'} · {batch?.exporterName || 'Unknown'}</p>
                       </div>
                       <div className="flex items-center gap-2">
                         {batch?.inspectionData?.grade && (
