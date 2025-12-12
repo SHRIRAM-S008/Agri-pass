@@ -14,7 +14,7 @@ export default function Auth() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const { login } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -25,13 +25,13 @@ export default function Auth() {
     setIsLoading(true);
 
     const result = await login(email, password);
-    
+
     if (result.success) {
       toast({
         title: 'Welcome back!',
         description: 'You have successfully signed in.',
       });
-      
+
       // Navigate based on the logged-in user's role
       const userEmail = email.toLowerCase();
       if (userEmail.includes('exporter')) navigate('/exporter');
@@ -42,7 +42,32 @@ export default function Auth() {
     } else {
       setError(result.error || 'Login failed');
     }
-    
+
+    setIsLoading(false);
+  };
+
+  const handleQuickLogin = async (email: string, role: string) => {
+    setError('');
+    setIsLoading(true);
+
+    const result = await login(email, 'demo'); // Password doesn't matter for demo
+
+    if (result.success) {
+      toast({
+        title: `Welcome ${role}!`,
+        description: 'Logged in successfully.',
+      });
+
+      // Navigate based on role
+      if (email.includes('exporter')) navigate('/exporter');
+      else if (email.includes('qa')) navigate('/qa');
+      else if (email.includes('importer')) navigate('/importer');
+      else if (email.includes('admin')) navigate('/admin');
+      else navigate('/');
+    } else {
+      setError(result.error || 'Login failed');
+    }
+
     setIsLoading(false);
   };
 
@@ -56,23 +81,23 @@ export default function Auth() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <div className="container flex items-center justify-center py-16">
+      <div className="container flex items-center justify-center py-8 sm:py-12 md:py-16 px-4">
         <div className="w-full max-w-md">
-          <div className="rounded-2xl border border-border bg-card p-8 shadow-soft">
-            <div className="flex flex-col items-center mb-8">
-              <div className="h-12 w-12 rounded-xl bg-primary flex items-center justify-center mb-4">
-                <Leaf className="h-6 w-6 text-primary-foreground" />
+          <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-soft">
+            <div className="flex flex-col items-center mb-6 sm:mb-8">
+              <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl bg-primary flex items-center justify-center mb-3 sm:mb-4">
+                <Leaf className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground" />
               </div>
-              <h1 className="text-2xl font-bold text-card-foreground">
+              <h1 className="text-xl sm:text-2xl font-bold text-card-foreground">
                 {isLogin ? 'Welcome Back' : 'Create Account'}
               </h1>
-              <p className="text-sm text-muted-foreground mt-1">
+              <p className="text-sm text-muted-foreground mt-1 text-center">
                 {isLogin ? 'Sign in to your AgriQCert account' : 'Get started with AgriQCert'}
               </p>
             </div>
 
             {error && (
-              <div className="mb-6 flex items-start gap-2 rounded-lg bg-destructive/10 p-3 text-sm text-destructive">
+              <div className="mb-4 sm:mb-6 flex items-start gap-2 rounded-lg bg-destructive/10 p-3 text-sm text-destructive">
                 <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
                 <span>{error}</span>
               </div>
@@ -117,19 +142,27 @@ export default function Auth() {
             </form>
 
             <div className="mt-6">
-              <p className="text-center text-sm text-muted-foreground mb-4">
-                Demo credentials (any password):
-              </p>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <span className="w-full border-t border-border" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-card px-2 text-muted-foreground">Quick Demo Login</span>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2 mt-4">
                 {demoCredentials.map((cred) => (
-                  <button
+                  <Button
                     key={cred.email}
                     type="button"
-                    onClick={() => setEmail(cred.email)}
-                    className="text-xs px-3 py-2 rounded-lg bg-muted hover:bg-muted/80 text-muted-foreground transition-colors"
+                    variant="outline"
+                    onClick={() => handleQuickLogin(cred.email, cred.role)}
+                    disabled={isLoading}
+                    className="text-xs sm:text-sm h-9 sm:h-10"
                   >
                     {cred.role}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>

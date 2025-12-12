@@ -3,13 +3,13 @@ import { Link, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/contexts/AuthContext';
 import { Header } from './Header';
-import { 
-  LayoutDashboard, 
-  Package, 
-  FileText, 
-  ClipboardCheck, 
-  Award, 
-  Users, 
+import {
+  LayoutDashboard,
+  Package,
+  FileText,
+  ClipboardCheck,
+  Award,
+  Users,
   Settings,
   QrCode,
   History,
@@ -64,6 +64,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
     <div className="min-h-screen bg-background">
       <Header />
       <div className="flex">
+        {/* Desktop Sidebar */}
         <aside className="hidden md:flex w-64 flex-col border-r border-border bg-sidebar min-h-[calc(100vh-4rem)]">
           <nav className="flex-1 p-4 space-y-1">
             {items.map((item) => (
@@ -83,10 +84,33 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
             ))}
           </nav>
         </aside>
-        <main className="flex-1 p-6 md:p-8">
+
+        {/* Main Content */}
+        <main className="flex-1 p-4 sm:p-6 md:p-8 pb-20 md:pb-8">
           {children}
         </main>
       </div>
+
+      {/* Mobile Bottom Navigation */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="flex items-center justify-around px-2 py-2">
+          {items.slice(0, 4).map((item) => (
+            <Link
+              key={item.path}
+              to={item.path}
+              className={cn(
+                'flex flex-col items-center gap-1 px-3 py-2 rounded-lg text-xs font-medium transition-colors min-w-[60px]',
+                location.pathname === item.path
+                  ? 'text-primary bg-primary/10'
+                  : 'text-muted-foreground hover:text-foreground'
+              )}
+            >
+              {item.icon}
+              <span className="truncate max-w-[60px]">{item.label.split(' ')[0]}</span>
+            </Link>
+          ))}
+        </div>
+      </nav>
     </div>
   );
 }

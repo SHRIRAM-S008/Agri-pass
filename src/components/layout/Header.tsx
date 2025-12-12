@@ -1,9 +1,10 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
-import { Leaf, LogOut, User } from 'lucide-react';
+import { Leaf, LogOut, User, Menu, X } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,10 +12,18 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet';
 
 export function Header() {
   const { user, isAuthenticated, logout } = useAuth();
   const { t } = useLanguage();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const getDashboardPath = () => {
     if (!user) return '/';
@@ -29,32 +38,33 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-14 sm:h-16 items-center justify-between px-4 sm:px-6">
         <Link to={isAuthenticated ? getDashboardPath() : '/'} className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-            <Leaf className="h-5 w-5 text-primary-foreground" />
+          <div className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg bg-primary">
+            <Leaf className="h-4 w-4 sm:h-5 sm:w-5 text-primary-foreground" />
           </div>
-          <span className="text-xl font-semibold text-foreground">AgriQCert</span>
+          <span className="text-lg sm:text-xl font-semibold text-foreground">AgriQCert</span>
         </Link>
 
-        <nav className="flex items-center gap-3">
+        {/* Desktop Navigation */}
+        <nav className="hidden sm:flex items-center gap-2 md:gap-3">
           <LanguageSwitcher />
-          
+
           {!isAuthenticated ? (
             <>
               <Link to="/verify">
-                <Button variant="ghost">{t('verifyCertificate')}</Button>
+                <Button variant="ghost" size="sm" className="md:text-base">{t('verifyCertificate')}</Button>
               </Link>
               <Link to="/auth">
-                <Button>{t('signIn')}</Button>
+                <Button size="sm" className="md:text-base">{t('signIn')}</Button>
               </Link>
             </>
           ) : (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="gap-2">
+                <Button variant="outline" size="sm" className="gap-2">
                   <User className="h-4 w-4" />
-                  {user?.name}
+                  <span className="hidden md:inline">{user?.name}</span>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-56">
@@ -81,6 +91,74 @@ export function Header() {
             </DropdownMenu>
           )}
         </nav>
+
+        {/* Mobile Navigation */}
+        <div className="flex sm:hidden items-center gap-2">
+          <LanguageSwitcher />
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="h-9 w-9">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[280px] sm:w-[350px]">
+              <SheetHeader>
+                <SheetTitle className="flex items-center gap-2">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
+                    <Leaf className="h-4 w-4 text-primary-foreground" />
+                  </div>
+                  AgriQCert
+                </SheetTitle>
+              </SheetHeader>
+              <div className="mt-6 flex flex-col gap-3">
+                {!isAuthenticated ? (
+                  <>
+                    <Link to="/verify" onClick={() => setMobileMenuOpen(false)}>
+                      <Button variant="outline" className="w-full justify-start">
+                        {t('verifyCertificate')}
+                      </Button>
+                    </Link>
+                    <Link to="/auth" onClick={() => setMobileMenuOpen(false)}>
+                      <Button className="w-full">{t('signIn')}</Button>
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <div className="px-3 py-2 rounded-lg bg-muted">
+                      <p className="text-sm font-medium">{user?.name}</p>
+                      <p className="text-xs text-muted-foreground">{user?.email}</p>
+                      <p className="text-xs text-muted-foreground capitalize mt-1">
+                        {t('role')}: {user?.role.replace('_', ' ')}
+                      </p>
+                    </div>
+                    <Link to={getDashboardPath()} onClick={() => setMobileMenuOpen(false)}>
+                      <Button variant="outline" className="w-full justify-start">
+                        {t('dashboard')}
+                      </Button>
+                    </Link>
+                    <Link to="/profile" onClick={() => setMobileMenuOpen(false)}>
+                      <Button variant="outline" className="w-full justify-start">
+                        {t('profile')}
+                      </Button>
+                    </Link>
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start text-destructive hover:text-destructive"
+                      onClick={() => {
+                        logout();
+                        setMobileMenuOpen(false);
+                      }}
+                    >
+                      <LogOut className="mr-2 h-4 w-4" />
+                      {t('signOut')}
+                    </Button>
+                  </>
+                )}
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );

@@ -63,42 +63,73 @@ export default function IssueCertificate() {
       const validUntil = new Date(issueDate);
       validUntil.setDate(validUntil.getDate() + parseInt(validityDays));
 
+      // Import the VC schema builder
+      const { buildDigitalProductPassport } = await import('@/lib/vcSchema');
+      const { inji } = await import('@/lib/inji');
+
+      // Build W3C Verifiable Credential payload
+      const vcPayload = buildDigitalProductPassport({
+        batchId: batch.id,
+        issuerName: 'National Agricultural Quality Agency',
+        issuerDID: 'did:web:agriqcert.app:national-qa',
+        issuanceDate: issueDate.toISOString(),
+        expirationDate: validUntil.toISOString(),
+        exporter: {
+          name: batch.exporterName,
+          id: batch.exporterId,
+          location: batch.farmLocation
+        },
+        product: {
+          name: batch.productType,
+          quantity: batch.quantity,
+          origin: batch.farmLocation,
+          grade: inspection.grade
+        },
+        inspectionResults: {
+          grade: inspection.grade,
+          moisture: inspection.moisture,
+          pesticideLevel: inspection.pesticideLevel,
+          heavyMetalTest: inspection.heavyMetalTest,
+          isoCode: inspection.isoCode,
+          inspectedAt: inspection.inspectedAt,
+          inspectorId: inspection.inspectorId,
+          notes: inspection.notes
+        },
+        attachments: batch.documents || [],
+        destination: batch.destinationCountry
+      });
+
+      // Call Inji Certify to issue VC and generate QR
+      toast.info('Connecting to Inji Certify...');
+      const certifyResponse = await inji.issueCredential(vcPayload);
+
+      // Create certificate record with Inji VC and QR
       const newCert: Certificate = {
         id: certId,
         batchId: batch.id,
         issuedAt: issueDate.toISOString(),
         validUntil: validUntil.toISOString(),
         status: 'VALID',
-        vcData: {
-          // Mock VC payload for demo
-          "@context": ["https://www.w3.org/2018/credentials/v1"],
-          "type": ["VerifiableCredential", "AgriculturalProductCredential"],
-          "issuer": "did:web:agriqcert.app",
-          "issuanceDate": issueDate.toISOString(),
-          "expirationDate": validUntil.toISOString(),
-          "credentialSubject": {
-            "id": `did:web:exporter.app:${batch.exporterName}`,
-            "product": batch.productType,
-            "grade": inspection.grade
-          }
-        },
+        vcData: certifyResponse.vc,
+        qrBase64: certifyResponse.qr,
         metadata: {
-          productType: batch.productType, // For search/display
-          notes: additionalNotes
+          productType: batch.productType,
+          notes: additionalNotes,
+          injiCertified: true
         },
         issuer: 'National Agricultural Quality Agency',
-        hash: randomId // Mock hash
+        hash: randomId // Will be recalculated in storage.saveCertificate
       };
 
       await storage.saveCertificate(newCert);
       await storage.updateBatchStatus(batch.id, 'CERTIFIED');
 
-      toast.success(`Digital Product Passport ${certId} issued successfully!`);
+      toast.success(`Digital Product Passport ${certId} issued successfully via Inji Certify!`);
       navigate('/qa/certificates');
 
     } catch (e) {
       console.error(e);
-      toast.error('Failed to issue certificate');
+      toast.error('Failed to issue certificate: ' + (e instanceof Error ? e.message : 'Unknown error'));
     }
   };
 

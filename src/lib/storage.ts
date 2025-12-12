@@ -63,6 +63,7 @@ export interface Certificate {
     validUntil: string;
     status: 'VALID' | 'REVOKED' | 'EXPIRED';
     vcData: any;
+    qrBase64?: string; // Inji-generated QR code
     metadata?: any;
     issuer?: string;
     hash?: string;
@@ -114,6 +115,7 @@ const mapCertificate = (row: any): Certificate => ({
     validUntil: row.valid_until,
     status: row.status as any,
     vcData: row.vc_data,
+    qrBase64: row.qr_base64,
     metadata: row.metadata,
     issuer: row.issuer || 'National Quality Agency',
     hash: row.hash || ''
@@ -239,6 +241,7 @@ export const storage = {
             valid_until: cert.validUntil,
             status: cert.status,
             vc_data: cert.vcData,
+            qr_base64: cert.qrBase64,
             metadata: cert.metadata,
             issuer: cert.issuer,
             hash: cert.hash

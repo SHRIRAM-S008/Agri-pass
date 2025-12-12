@@ -24,6 +24,10 @@ export default function Certificate() {
   const [certificate, setCertificate] = useState<CertificateType | undefined>(undefined);
   const [batch, setBatch] = useState<Batch | undefined>(undefined);
 
+  /* Tamper Detection State - Must be declared before any conditional returns */
+  const [isTampered, setIsTampered] = useState(false);
+  const [computedHash, setComputedHash] = useState('');
+
   useEffect(() => {
     const fetchData = async () => {
       if (id) {
@@ -45,25 +49,7 @@ export default function Certificate() {
     fetchData();
   }, [id]);
 
-  const inspection = batch?.inspectionData;
-
-  if (!certificate || !batch) {
-    return (
-      <DashboardLayout>
-        <div className="text-center py-12">
-          <h2 className="text-xl font-semibold">Certificate not found</h2>
-          <Link to="/exporter/certificates" className="text-primary hover:underline mt-2 inline-block">
-            Back to Certificates
-          </Link>
-        </div>
-      </DashboardLayout>
-    );
-  }
-
   /* Tamper Detection Logic */
-  const [isTampered, setIsTampered] = useState(false);
-  const [computedHash, setComputedHash] = useState('');
-
   useEffect(() => {
     const verifyIntegrity = async () => {
       if (!certificate) return;
@@ -79,6 +65,21 @@ export default function Certificate() {
     };
     verifyIntegrity();
   }, [certificate]);
+
+  const inspection = batch?.inspectionData;
+
+  if (!certificate || !batch) {
+    return (
+      <DashboardLayout>
+        <div className="text-center py-12">
+          <h2 className="text-xl font-semibold">Certificate not found</h2>
+          <Link to="/exporter/certificates" className="text-primary hover:underline mt-2 inline-block">
+            Back to Certificates
+          </Link>
+        </div>
+      </DashboardLayout>
+    );
+  }
 
   // Generate PixelPass QR
   const offlineQRData = certificate && batch ? encodePixelPass({
@@ -116,16 +117,16 @@ export default function Certificate() {
     <DashboardLayout>
       <div className="space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <Link to="/exporter/certificates">
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className="h-9 w-9">
                 <ArrowLeft className="h-5 w-5" />
               </Button>
             </Link>
             <div>
-              <h1 className="text-2xl font-bold text-foreground">{t('digitalProductPassport')}</h1>
-              <p className="text-muted-foreground">{t('certificateId')}: {certificate.id}</p>
+              <h1 className="text-xl sm:text-2xl font-bold text-foreground">{t('digitalProductPassport')}</h1>
+              <p className="text-xs sm:text-sm text-muted-foreground break-all">{t('certificateId')}: {certificate.id}</p>
             </div>
           </div>
           <LanguageSwitcher />
@@ -133,16 +134,18 @@ export default function Certificate() {
 
         {/* Timeline Section */}
         <Card className="overflow-hidden">
-          <CardHeader className="bg-gradient-to-r from-primary/5 to-accent/5">
-            <CardTitle className="text-lg">{t('batchTimeline')}</CardTitle>
+          <CardHeader className="bg-gradient-to-r from-primary/5 to-accent/5 p-4 sm:p-6">
+            <CardTitle className="text-base sm:text-lg">{t('batchTimeline')}</CardTitle>
           </CardHeader>
-          <CardContent className="pt-6 pb-8 px-8">
-            <BatchTimeline
-              status="certified"
-              submittedAt={batch.submittedAt}
-              inspectedAt={inspection?.inspectedAt}
-              certifiedAt={certificate.issuedAt}
-            />
+          <CardContent className="pt-6 pb-8 px-4 sm:px-8 overflow-x-auto">
+            <div className="min-w-[300px]">
+              <BatchTimeline
+                status="certified"
+                submittedAt={batch.submittedAt}
+                inspectedAt={inspection?.inspectedAt}
+                certifiedAt={certificate.issuedAt}
+              />
+            </div>
           </CardContent>
         </Card>
 
@@ -157,53 +160,53 @@ export default function Certificate() {
                 <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent rounded-full blur-3xl transform -translate-x-1/2 translate-y-1/2" />
               </div>
 
-              <CardHeader className="relative">
-                <div className="flex items-center justify-between">
-                  <CardTitle className="flex items-center gap-2">
+              <CardHeader className="relative p-4 sm:p-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <CardTitle className="flex items-center gap-2 text-lg">
                     <Shield className="h-5 w-5 text-primary" />
                     {t('verifiedCertificate')}
                   </CardTitle>
                   <div className="flex items-center gap-2">
-                    <div className="flex items-center gap-1 text-sm text-primary bg-primary/10 px-3 py-1 rounded-full">
-                      <CheckCircle className="h-4 w-4" />
+                    <div className="flex items-center gap-1 text-xs sm:text-sm text-primary bg-primary/10 px-3 py-1 rounded-full">
+                      <CheckCircle className="h-3 w-3 sm:h-4 sm:w-4" />
                       {t('valid')}
                     </div>
                   </div>
                 </div>
               </CardHeader>
 
-              <CardContent className="relative space-y-6">
+              <CardContent className="relative space-y-6 p-4 sm:p-6 pt-0">
                 {/* Product Hero Section */}
                 <div className="flex flex-col md:flex-row gap-6">
                   {/* Product Image Placeholder */}
-                  <div className="w-full md:w-48 h-48 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl flex items-center justify-center border border-border">
+                  <div className="w-full md:w-48 h-40 sm:h-48 bg-gradient-to-br from-primary/10 to-accent/10 rounded-xl flex items-center justify-center border border-border">
                     <div className="text-center">
-                      <Leaf className="h-16 w-16 text-primary mx-auto mb-2" />
+                      <Leaf className="h-12 w-12 sm:h-16 sm:w-16 text-primary mx-auto mb-2" />
                       <span className="text-sm font-medium text-muted-foreground">{batch.productType}</span>
                     </div>
                   </div>
 
                   {/* Product Details Grid */}
-                  <div className="flex-1 grid grid-cols-2 gap-4">
+                  <div className="flex-1 grid grid-cols-2 gap-3 sm:gap-4">
                     <div className="space-y-1">
-                      <p className="text-sm text-muted-foreground">{t('productType')}</p>
-                      <p className="font-semibold text-lg">{batch.productType}</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground">{t('productType')}</p>
+                      <p className="font-semibold text-base sm:text-lg">{batch.productType}</p>
                     </div>
                     <div className="space-y-1">
-                      <p className="text-sm text-muted-foreground">{t('quantity')}</p>
-                      <p className="font-semibold text-lg">{batch.quantity}</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground">{t('quantity')}</p>
+                      <p className="font-semibold text-base sm:text-lg">{batch.quantity}</p>
                     </div>
                     <div className="space-y-1">
-                      <p className="text-sm text-muted-foreground flex items-center gap-1">
+                      <p className="text-xs sm:text-sm text-muted-foreground flex items-center gap-1">
                         <MapPin className="h-3 w-3" /> {t('origin')}
                       </p>
-                      <p className="font-medium">{batch.farmLocation}</p>
+                      <p className="font-medium text-sm sm:text-base">{batch.farmLocation}</p>
                     </div>
                     <div className="space-y-1">
-                      <p className="text-sm text-muted-foreground flex items-center gap-1">
+                      <p className="text-xs sm:text-sm text-muted-foreground flex items-center gap-1">
                         <Globe className="h-3 w-3" /> {t('destination')}
                       </p>
-                      <p className="font-medium">{batch.destinationCountry}</p>
+                      <p className="font-medium text-sm sm:text-base">{batch.destinationCountry}</p>
                     </div>
                   </div>
                 </div>
@@ -220,7 +223,7 @@ export default function Certificate() {
                     </div>
 
                     {/* Inspection Chart */}
-                    <div>
+                    <div className="min-h-[200px]">
                       <InspectionChart
                         moisture={inspection.moisture}
                         pesticideLevel={inspection.pesticideLevel}
@@ -232,22 +235,22 @@ export default function Certificate() {
 
                 {/* Detailed Inspection Results */}
                 {inspection && (
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4 border-t border-border">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 pt-4 border-t border-border">
                     <div className="text-center p-3 bg-muted/50 rounded-lg">
                       <p className="text-xs text-muted-foreground mb-1">{t('moistureLevel')}</p>
-                      <p className="font-bold text-primary text-xl">{inspection.moisture}%</p>
+                      <p className="font-bold text-primary text-lg sm:text-xl">{inspection.moisture}%</p>
                     </div>
                     <div className="text-center p-3 bg-muted/50 rounded-lg">
                       <p className="text-xs text-muted-foreground mb-1">{t('pesticideTest')}</p>
-                      <p className="font-medium text-sm">{inspection.pesticideLevel}</p>
+                      <p className="font-medium text-xs sm:text-sm">{inspection.pesticideLevel}</p>
                     </div>
                     <div className="text-center p-3 bg-muted/50 rounded-lg">
                       <p className="text-xs text-muted-foreground mb-1">{t('heavyMetals')}</p>
-                      <p className="font-medium text-sm">{inspection.heavyMetalTest}</p>
+                      <p className="font-medium text-xs sm:text-sm">{inspection.heavyMetalTest}</p>
                     </div>
                     <div className="text-center p-3 bg-muted/50 rounded-lg">
                       <p className="text-xs text-muted-foreground mb-1">{t('isoStandard')}</p>
-                      <p className="font-medium text-sm">{inspection.isoCode}</p>
+                      <p className="font-medium text-xs sm:text-sm">{inspection.isoCode}</p>
                     </div>
                   </div>
                 )}
@@ -256,31 +259,31 @@ export default function Certificate() {
 
             {/* Issuer Information */}
             <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
+              <CardHeader className="p-4 sm:p-6">
+                <CardTitle className="flex items-center gap-2 text-lg">
                   <Building2 className="h-5 w-5" />
                   {t('issuerInformation')}
                 </CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="p-4 sm:p-6 pt-0">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <p className="text-sm text-muted-foreground">{t('issuingAuthority')}</p>
-                    <p className="font-medium">{certificate.vcData.issuer}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground">{t('issuingAuthority')}</p>
+                    <p className="font-medium text-sm sm:text-base">{certificate.vcData.issuer}</p>
                   </div>
                   <div className="space-y-1">
-                    <p className="text-sm text-muted-foreground flex items-center gap-1">
+                    <p className="text-xs sm:text-sm text-muted-foreground flex items-center gap-1">
                       <Calendar className="h-3 w-3" /> {t('issueDate')}
                     </p>
-                    <p className="font-medium">{new Date(certificate.issuedAt).toLocaleDateString()}</p>
+                    <p className="font-medium text-sm sm:text-base">{new Date(certificate.issuedAt).toLocaleDateString()}</p>
                   </div>
                   <div className="space-y-1">
-                    <p className="text-sm text-muted-foreground">{t('validUntil')}</p>
-                    <p className="font-medium">{certificate.vcData.expiration || 'N/A'}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground">{t('validUntil')}</p>
+                    <p className="font-medium text-sm sm:text-base">{certificate.vcData.expiration || 'N/A'}</p>
                   </div>
                   <div className="space-y-1">
-                    <p className="text-sm text-muted-foreground">{t('certificateHash')}</p>
-                    <p className="font-mono text-xs bg-muted px-2 py-1 rounded truncate">{certificate.id}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground">{t('certificateHash')}</p>
+                    <p className="font-mono text-[10px] sm:text-xs bg-muted px-2 py-1 rounded truncate">{certificate.id}</p>
                   </div>
                 </div>
               </CardContent>
@@ -298,8 +301,8 @@ export default function Certificate() {
           <div className="space-y-6">
             {/* Certificate Stamp */}
             <Card>
-              <CardHeader>
-                <CardTitle className="text-center">{t('certificateStamp')}</CardTitle>
+              <CardHeader className="p-4 sm:p-6">
+                <CardTitle className="text-center text-lg">{t('certificateStamp')}</CardTitle>
               </CardHeader>
               <CardContent className="flex justify-center pb-6">
                 <CertificateStamp
@@ -313,36 +316,54 @@ export default function Certificate() {
 
             {/* QR Code */}
             <Card>
-              <CardHeader>
+              <CardHeader className="p-4 sm:p-6">
                 <div className="flex items-center justify-between">
-                  <CardTitle>QR Code</CardTitle>
-                  <OfflineQRBadge />
+                  <CardTitle className="text-lg">QR Code</CardTitle>
+                  {certificate.qrBase64 ? (
+                    <div className="flex items-center gap-1 text-[10px] sm:text-xs text-primary bg-primary/10 px-2 py-1 rounded-full">
+                      <Shield className="h-3 w-3" />
+                      Inji Certified
+                    </div>
+                  ) : (
+                    <OfflineQRBadge />
+                  )}
                 </div>
               </CardHeader>
-              <CardContent className="flex flex-col items-center">
-                <div className="w-48 h-48 bg-background p-4 rounded-lg flex items-center justify-center border border-border shadow-inner">
-                  <QRCode
-                    value={offlineQRData}
-                    size={160}
-                    level="L"
-                    bgColor="transparent"
-                  />
+              <CardContent className="flex flex-col items-center p-4 sm:p-6 pt-0">
+                <div className="w-40 h-40 sm:w-48 sm:h-48 bg-background p-3 sm:p-4 rounded-lg flex items-center justify-center border border-border shadow-inner">
+                  {certificate.qrBase64 ? (
+                    // Display Inji-generated QR code
+                    <img
+                      src={certificate.qrBase64}
+                      alt="Inji Certificate QR"
+                      className="w-full h-full object-contain"
+                    />
+                  ) : (
+                    // Fallback to PixelPass QR
+                    <QRCode
+                      value={offlineQRData}
+                      size={160}
+                      level="L"
+                      bgColor="transparent"
+                      className="w-full h-full"
+                    />
+                  )}
                 </div>
-                <p className="text-sm text-muted-foreground text-center mt-4">
+                <p className="text-xs sm:text-sm text-muted-foreground text-center mt-4">
                   {t('scanToVerify')}
                 </p>
-                <p className="text-xs text-accent mt-2 text-center">
-                  ✓ {t('offlineVerification')}
+                <p className="text-[10px] sm:text-xs text-accent mt-2 text-center">
+                  ✓ {certificate.qrBase64 ? 'Inji Wallet Compatible' : t('offlineVerification')}
                 </p>
               </CardContent>
             </Card>
 
             {/* Actions */}
             <Card>
-              <CardHeader>
-                <CardTitle>{t('actions')}</CardTitle>
+              <CardHeader className="p-4 sm:p-6">
+                <CardTitle className="text-lg">{t('actions')}</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-3">
+              <CardContent className="space-y-3 p-4 sm:p-6 pt-0">
                 <Button className="w-full" onClick={handleDownloadPDF}>
                   <Download className="h-4 w-4 mr-2" />
                   {t('downloadVC')}

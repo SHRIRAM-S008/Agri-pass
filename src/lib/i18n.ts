@@ -1,6 +1,6 @@
-// Multi-language support for English, Hindi, and Tamil
+// Multi-language support for English, Hindi, Tamil, French, Arabic, Spanish, Sinhala, and Portuguese
 
-export type Language = 'en' | 'hi' | 'ta';
+export type Language = 'en' | 'hi' | 'ta' | 'fr' | 'ar' | 'es' | 'si' | 'pt';
 
 export const translations = {
   en: {
@@ -25,7 +25,7 @@ export const translations = {
     error: 'Error',
     warning: 'Warning',
     info: 'Info',
-    
+
     // Navigation
     home: 'Home',
     profile: 'Profile',
@@ -33,20 +33,20 @@ export const translations = {
     signIn: 'Sign In',
     signOut: 'Sign Out',
     verifyCertificate: 'Verify Certificate',
-    
+
     // Roles
     exporter: 'Exporter',
     qaAgency: 'QA Agency',
     importer: 'Importer',
     admin: 'Admin',
-    
+
     // Dashboard Titles
     exporterDashboard: 'Exporter Dashboard',
     qaDashboard: 'QA Dashboard',
     importerDashboard: 'Importer Dashboard',
     adminDashboard: 'Admin Dashboard',
     welcomeBack: 'Welcome back! Here\'s your overview.',
-    
+
     // Batch Related
     batches: 'Batches',
     batch: 'Batch',
@@ -59,7 +59,7 @@ export const translations = {
     totalBatches: 'Total Batches',
     pendingBatches: 'Pending',
     viewAll: 'View all',
-    
+
     // Statuses
     submitted: 'Submitted',
     underReview: 'Under Review',
@@ -74,7 +74,7 @@ export const translations = {
     expired: 'Expired',
     pending: 'Pending',
     completed: 'Completed',
-    
+
     // Certificates
     certificates: 'Certificates',
     certificate: 'Certificate',
@@ -84,7 +84,7 @@ export const translations = {
     recentCertificates: 'Recent Certificates',
     downloadCertificate: 'Download Certificate',
     viewCertificate: 'View Certificate',
-    
+
     // Digital Passport
     digitalProductPassport: 'Digital Product Passport',
     verifiedCertificate: 'Verified Certificate',
@@ -98,7 +98,7 @@ export const translations = {
     downloadPDF: 'Download PDF',
     addToWallet: 'Add to Inji Wallet',
     offlineVerification: 'Offline Verification Available',
-    
+
     // Product Fields
     productType: 'Product Type',
     product: 'Product',
@@ -108,7 +108,7 @@ export const translations = {
     farmLocation: 'Farm Location',
     harvestDate: 'Harvest Date',
     packagingDate: 'Packaging Date',
-    
+
     // Inspection Fields
     inspection: 'Inspection',
     inspections: 'Inspections',
@@ -124,7 +124,7 @@ export const translations = {
     heavyMetals: 'Heavy Metals',
     isoStandard: 'ISO Standard',
     passedAllTests: 'Passed All Tests',
-    
+
     // Certificate Fields
     issuingAuthority: 'Issuing Authority',
     issueDate: 'Issue Date',
@@ -132,7 +132,7 @@ export const translations = {
     validUntil: 'Valid Until',
     certificateHash: 'Certificate Hash',
     integrityHash: 'Integrity Hash',
-    
+
     // Timeline
     batchTimeline: 'Batch Timeline',
     batchJourney: 'Batch Journey',
@@ -141,7 +141,7 @@ export const translations = {
     inspectionCompleted: 'Inspection Completed',
     certificateIssued: 'Certificate Issued',
     certificateVerified: 'Certificate Verified',
-    
+
     // Verification
     verificationSuccess: 'Verification Successful',
     verificationFailed: 'Verification Failed',
@@ -158,7 +158,7 @@ export const translations = {
     startCameraScan: 'Start Camera Scan',
     scanning: 'Scanning...',
     scanAnother: 'Scan Another',
-    
+
     // Security
     securityShield: 'Security Shield',
     tamperAlert: 'Tamper Alert',
@@ -166,30 +166,30 @@ export const translations = {
     certificateIntact: 'Certificate integrity intact',
     simulateTamper: 'Simulate Tamper',
     resetTamper: 'Reset',
-    
+
     // Offline
     offlineMode: 'Offline Mode',
     offlineVerifyDesc: 'Basic verification available without internet',
     offlineReady: 'Offline Ready',
-    
+
     // Users
     users: 'Users',
     manageUsers: 'Manage Users',
     totalExporters: 'Total Exporters',
     qaAgencies: 'QA Agencies',
-    
+
     // Admin
     revocations: 'Revocations',
     viewRevocations: 'View Revocations',
     auditLogs: 'Audit Logs',
     systemSettings: 'System Settings',
     quickActions: 'Quick Actions',
-    
+
     // History
     history: 'History',
     verificationHistory: 'Verification History',
     viewHistory: 'View History',
-    
+
     // Form
     selectProduct: 'Select product type',
     enterQuantity: 'Enter quantity',
@@ -200,7 +200,7 @@ export const translations = {
     dragAndDrop: 'Drag and drop or click to upload',
     submitting: 'Submitting...',
     batchSubmittedSuccess: 'Batch submitted successfully!',
-    
+
     // Misc
     downloadReport: 'Download Report',
     awaitingInspection: 'Awaiting inspection',
@@ -232,7 +232,7 @@ export const translations = {
     error: 'त्रुटि',
     warning: 'चेतावनी',
     info: 'जानकारी',
-    
+
     // Navigation
     home: 'होम',
     profile: 'प्रोफ़ाइल',
@@ -240,20 +240,20 @@ export const translations = {
     signIn: 'साइन इन',
     signOut: 'साइन आउट',
     verifyCertificate: 'प्रमाणपत्र सत्यापित करें',
-    
+
     // Roles
     exporter: 'निर्यातक',
     qaAgency: 'QA एजेंसी',
     importer: 'आयातक',
     admin: 'व्यवस्थापक',
-    
+
     // Dashboard Titles
     exporterDashboard: 'निर्यातक डैशबोर्ड',
     qaDashboard: 'QA डैशबोर्ड',
     importerDashboard: 'आयातक डैशबोर्ड',
     adminDashboard: 'व्यवस्थापक डैशबोर्ड',
     welcomeBack: 'वापसी पर स्वागत है! यहाँ आपका अवलोकन है।',
-    
+
     // Batch Related
     batches: 'बैच',
     batch: 'बैच',
@@ -266,7 +266,7 @@ export const translations = {
     totalBatches: 'कुल बैच',
     pendingBatches: 'लंबित',
     viewAll: 'सभी देखें',
-    
+
     // Statuses
     submitted: 'जमा किया गया',
     underReview: 'समीक्षाधीन',
@@ -281,7 +281,7 @@ export const translations = {
     expired: 'समाप्त',
     pending: 'लंबित',
     completed: 'पूर्ण',
-    
+
     // Certificates
     certificates: 'प्रमाणपत्र',
     certificate: 'प्रमाणपत्र',
@@ -291,7 +291,7 @@ export const translations = {
     recentCertificates: 'हाल के प्रमाणपत्र',
     downloadCertificate: 'प्रमाणपत्र डाउनलोड करें',
     viewCertificate: 'प्रमाणपत्र देखें',
-    
+
     // Digital Passport
     digitalProductPassport: 'डिजिटल उत्पाद पासपोर्ट',
     verifiedCertificate: 'सत्यापित प्रमाणपत्र',
@@ -305,7 +305,7 @@ export const translations = {
     downloadPDF: 'PDF डाउनलोड करें',
     addToWallet: 'Inji वॉलेट में जोड़ें',
     offlineVerification: 'ऑफ़लाइन सत्यापन उपलब्ध',
-    
+
     // Product Fields
     productType: 'उत्पाद प्रकार',
     product: 'उत्पाद',
@@ -315,7 +315,7 @@ export const translations = {
     farmLocation: 'खेत का स्थान',
     harvestDate: 'फसल की तारीख',
     packagingDate: 'पैकेजिंग तारीख',
-    
+
     // Inspection Fields
     inspection: 'निरीक्षण',
     inspections: 'निरीक्षण',
@@ -331,7 +331,7 @@ export const translations = {
     heavyMetals: 'भारी धातु',
     isoStandard: 'ISO मानक',
     passedAllTests: 'सभी परीक्षण पास',
-    
+
     // Certificate Fields
     issuingAuthority: 'जारी करने वाला प्राधिकरण',
     issueDate: 'जारी करने की तारीख',
@@ -339,7 +339,7 @@ export const translations = {
     validUntil: 'वैध तक',
     certificateHash: 'प्रमाणपत्र हैश',
     integrityHash: 'अखंडता हैश',
-    
+
     // Timeline
     batchTimeline: 'बैच समयरेखा',
     batchJourney: 'बैच यात्रा',
@@ -348,7 +348,7 @@ export const translations = {
     inspectionCompleted: 'निरीक्षण पूर्ण',
     certificateIssued: 'प्रमाणपत्र जारी',
     certificateVerified: 'प्रमाणपत्र सत्यापित',
-    
+
     // Verification
     verificationSuccess: 'सत्यापन सफल',
     verificationFailed: 'सत्यापन विफल',
@@ -365,7 +365,7 @@ export const translations = {
     startCameraScan: 'कैमरा स्कैन शुरू करें',
     scanning: 'स्कैन हो रहा है...',
     scanAnother: 'एक और स्कैन करें',
-    
+
     // Security
     securityShield: 'सुरक्षा कवच',
     tamperAlert: 'छेड़छाड़ चेतावनी',
@@ -373,30 +373,30 @@ export const translations = {
     certificateIntact: 'प्रमाणपत्र अखंडता बरकरार',
     simulateTamper: 'छेड़छाड़ सिमुलेट करें',
     resetTamper: 'रीसेट',
-    
+
     // Offline
     offlineMode: 'ऑफ़लाइन मोड',
     offlineVerifyDesc: 'इंटरनेट के बिना बुनियादी सत्यापन उपलब्ध',
     offlineReady: 'ऑफ़लाइन तैयार',
-    
+
     // Users
     users: 'उपयोगकर्ता',
     manageUsers: 'उपयोगकर्ता प्रबंधित करें',
     totalExporters: 'कुल निर्यातक',
     qaAgencies: 'QA एजेंसियां',
-    
+
     // Admin
     revocations: 'निरस्तीकरण',
     viewRevocations: 'निरस्तीकरण देखें',
     auditLogs: 'ऑडिट लॉग',
     systemSettings: 'सिस्टम सेटिंग्स',
     quickActions: 'त्वरित कार्रवाई',
-    
+
     // History
     history: 'इतिहास',
     verificationHistory: 'सत्यापन इतिहास',
     viewHistory: 'इतिहास देखें',
-    
+
     // Form
     selectProduct: 'उत्पाद प्रकार चुनें',
     enterQuantity: 'मात्रा दर्ज करें',
@@ -407,7 +407,7 @@ export const translations = {
     dragAndDrop: 'खींचें और छोड़ें या अपलोड करने के लिए क्लिक करें',
     submitting: 'जमा हो रहा है...',
     batchSubmittedSuccess: 'बैच सफलतापूर्वक जमा किया गया!',
-    
+
     // Misc
     downloadReport: 'रिपोर्ट डाउनलोड करें',
     awaitingInspection: 'निरीक्षण की प्रतीक्षा',
@@ -439,7 +439,7 @@ export const translations = {
     error: 'பிழை',
     warning: 'எச்சரிக்கை',
     info: 'தகவல்',
-    
+
     // Navigation
     home: 'முகப்பு',
     profile: 'சுயவிவரம்',
@@ -447,20 +447,20 @@ export const translations = {
     signIn: 'உள்நுழை',
     signOut: 'வெளியேறு',
     verifyCertificate: 'சான்றிதழ் சரிபார்',
-    
+
     // Roles
     exporter: 'ஏற்றுமதியாளர்',
     qaAgency: 'QA நிறுவனம்',
     importer: 'இறக்குமதியாளர்',
     admin: 'நிர்வாகி',
-    
+
     // Dashboard Titles
     exporterDashboard: 'ஏற்றுமதியாளர் டாஷ்போர்டு',
     qaDashboard: 'QA டாஷ்போர்டு',
     importerDashboard: 'இறக்குமதியாளர் டாஷ்போர்டு',
     adminDashboard: 'நிர்வாகி டாஷ்போர்டு',
     welcomeBack: 'மீண்டும் வரவேற்கிறோம்! உங்கள் மேலோட்டம் இதோ.',
-    
+
     // Batch Related
     batches: 'தொகுதிகள்',
     batch: 'தொகுதி',
@@ -473,7 +473,7 @@ export const translations = {
     totalBatches: 'மொத்த தொகுதிகள்',
     pendingBatches: 'நிலுவை',
     viewAll: 'அனைத்தையும் காண்க',
-    
+
     // Statuses
     submitted: 'சமர்ப்பிக்கப்பட்டது',
     underReview: 'மதிப்பாய்வில்',
@@ -488,7 +488,7 @@ export const translations = {
     expired: 'காலாவதியானது',
     pending: 'நிலுவை',
     completed: 'நிறைவு',
-    
+
     // Certificates
     certificates: 'சான்றிதழ்கள்',
     certificate: 'சான்றிதழ்',
@@ -498,7 +498,7 @@ export const translations = {
     recentCertificates: 'சமீபத்திய சான்றிதழ்கள்',
     downloadCertificate: 'சான்றிதழ் பதிவிறக்கு',
     viewCertificate: 'சான்றிதழ் காண்க',
-    
+
     // Digital Passport
     digitalProductPassport: 'டிஜிட்டல் தயாரிப்பு பாஸ்போர்ட்',
     verifiedCertificate: 'சரிபார்க்கப்பட்ட சான்றிதழ்',
@@ -512,7 +512,7 @@ export const translations = {
     downloadPDF: 'PDF பதிவிறக்கு',
     addToWallet: 'Inji வாலட்டில் சேர்',
     offlineVerification: 'ஆஃப்லைன் சரிபார்ப்பு கிடைக்கும்',
-    
+
     // Product Fields
     productType: 'தயாரிப்பு வகை',
     product: 'தயாரிப்பு',
@@ -522,7 +522,7 @@ export const translations = {
     farmLocation: 'பண்ணை இடம்',
     harvestDate: 'அறுவடை தேதி',
     packagingDate: 'பேக்கேஜிங் தேதி',
-    
+
     // Inspection Fields
     inspection: 'ஆய்வு',
     inspections: 'ஆய்வுகள்',
@@ -538,7 +538,7 @@ export const translations = {
     heavyMetals: 'கன உலோகங்கள்',
     isoStandard: 'ISO தரநிலை',
     passedAllTests: 'அனைத்து சோதனைகளும் தேர்ச்சி',
-    
+
     // Certificate Fields
     issuingAuthority: 'வழங்கும் அதிகாரம்',
     issueDate: 'வழங்கிய தேதி',
@@ -546,7 +546,7 @@ export const translations = {
     validUntil: 'செல்லுபடியாகும் வரை',
     certificateHash: 'சான்றிதழ் ஹாஷ்',
     integrityHash: 'ஒருமைப்பாடு ஹாஷ்',
-    
+
     // Timeline
     batchTimeline: 'தொகுதி காலவரிசை',
     batchJourney: 'தொகுதி பயணம்',
@@ -555,7 +555,7 @@ export const translations = {
     inspectionCompleted: 'ஆய்வு நிறைவு',
     certificateIssued: 'சான்றிதழ் வழங்கப்பட்டது',
     certificateVerified: 'சான்றிதழ் சரிபார்க்கப்பட்டது',
-    
+
     // Verification
     verificationSuccess: 'சரிபார்ப்பு வெற்றி',
     verificationFailed: 'சரிபார்ப்பு தோல்வி',
@@ -572,7 +572,7 @@ export const translations = {
     startCameraScan: 'கேமரா ஸ்கேன் தொடங்கு',
     scanning: 'ஸ்கேன் செய்கிறது...',
     scanAnother: 'மற்றொன்றை ஸ்கேன் செய்',
-    
+
     // Security
     securityShield: 'பாதுகாப்பு கவசம்',
     tamperAlert: 'சேதார எச்சரிக்கை',
@@ -580,30 +580,30 @@ export const translations = {
     certificateIntact: 'சான்றிதழ் ஒருமைப்பாடு உள்ளது',
     simulateTamper: 'சேதாரத்தை உருவகப்படுத்து',
     resetTamper: 'மீட்டமை',
-    
+
     // Offline
     offlineMode: 'ஆஃப்லைன் முறை',
     offlineVerifyDesc: 'இணையம் இல்லாமல் அடிப்படை சரிபார்ப்பு கிடைக்கும்',
     offlineReady: 'ஆஃப்லைன் தயார்',
-    
+
     // Users
     users: 'பயனர்கள்',
     manageUsers: 'பயனர்களை நிர்வகி',
     totalExporters: 'மொத்த ஏற்றுமதியாளர்கள்',
     qaAgencies: 'QA நிறுவனங்கள்',
-    
+
     // Admin
     revocations: 'திரும்பப்பெறுதல்கள்',
     viewRevocations: 'திரும்பப்பெறுதல்கள் காண்க',
     auditLogs: 'தணிக்கை பதிவுகள்',
     systemSettings: 'கணினி அமைப்புகள்',
     quickActions: 'விரைவு செயல்கள்',
-    
+
     // History
     history: 'வரலாறு',
     verificationHistory: 'சரிபார்ப்பு வரலாறு',
     viewHistory: 'வரலாறு காண்க',
-    
+
     // Form
     selectProduct: 'தயாரிப்பு வகையை தேர்ந்தெடு',
     enterQuantity: 'அளவை உள்ளிடவும்',
@@ -614,7 +614,7 @@ export const translations = {
     dragAndDrop: 'இழுத்து விடவும் அல்லது பதிவேற்ற கிளிக் செய்யவும்',
     submitting: 'சமர்ப்பிக்கிறது...',
     batchSubmittedSuccess: 'தொகுதி வெற்றிகரமாக சமர்ப்பிக்கப்பட்டது!',
-    
+
     // Misc
     downloadReport: 'அறிக்கை பதிவிறக்கு',
     awaitingInspection: 'ஆய்வுக்கு காத்திருக்கிறது',
@@ -623,6 +623,1041 @@ export const translations = {
     role: 'பங்கு',
     email: 'மின்னஞ்சல்',
     name: 'பெயர்',
+  },
+  fr: {
+    // Common
+    dashboard: 'Tableau de bord',
+    submit: 'Soumettre',
+    cancel: 'Annuler',
+    save: 'Enregistrer',
+    download: 'Télécharger',
+    verify: 'Vérifier',
+    back: 'Retour',
+    view: 'Voir',
+    edit: 'Modifier',
+    delete: 'Supprimer',
+    status: 'Statut',
+    actions: 'Actions',
+    search: 'Rechercher',
+    filter: 'Filtrer',
+    loading: 'Chargement...',
+    noData: 'Aucune donnée disponible',
+    success: 'Succès',
+    error: 'Erreur',
+    warning: 'Avertissement',
+    info: 'Info',
+
+    // Navigation
+    home: 'Accueil',
+    profile: 'Profil',
+    settings: 'Paramètres',
+    signIn: 'Se connecter',
+    signOut: 'Se déconnecter',
+    verifyCertificate: 'Vérifier le certificat',
+
+    // Roles
+    exporter: 'Exportateur',
+    qaAgency: 'Agence QA',
+    importer: 'Importateur',
+    admin: 'Administrateur',
+
+    // Dashboard Titles
+    exporterDashboard: 'Tableau de bord exportateur',
+    qaDashboard: 'Tableau de bord QA',
+    importerDashboard: 'Tableau de bord importateur',
+    adminDashboard: 'Tableau de bord admin',
+    welcomeBack: 'Bon retour! Voici votre aperçu.',
+
+    // Batch Related
+    batches: 'Lots',
+    batch: 'Lot',
+    batchId: 'ID du lot',
+    submitBatch: 'Soumettre un lot',
+    submitNewBatch: 'Soumettre un nouveau lot',
+    myBatches: 'Mes lots',
+    allBatches: 'Tous les lots',
+    recentBatches: 'Lots récents',
+    totalBatches: 'Total des lots',
+    pendingBatches: 'En attente',
+    viewAll: 'Voir tout',
+
+    // Statuses
+    submitted: 'Soumis',
+    underReview: 'En révision',
+    inInspection: 'En inspection',
+    inspected: 'Inspecté',
+    certified: 'Certifié',
+    rejected: 'Rejeté',
+    verified: 'Vérifié',
+    valid: 'Valide',
+    invalid: 'Invalide',
+    revoked: 'Révoqué',
+    expired: 'Expiré',
+    pending: 'En attente',
+    completed: 'Terminé',
+
+    // Certificates
+    certificates: 'Certificats',
+    certificate: 'Certificat',
+    certificateId: 'ID du certificat',
+    issuedCertificates: 'Certificats émis',
+    certificatesIssued: 'Certificats émis',
+    recentCertificates: 'Certificats récents',
+    downloadCertificate: 'Télécharger le certificat',
+    viewCertificate: 'Voir le certificat',
+
+    // Digital Passport
+    digitalProductPassport: 'Passeport produit numérique',
+    verifiedCertificate: 'Certificat vérifié',
+    productDetails: 'Détails du produit',
+    inspectionResults: 'Résultats d\'inspection',
+    issuerInformation: 'Informations sur l\'émetteur',
+    qualityScore: 'Score de qualité',
+    certificateStamp: 'Tampon du certificat',
+    scanToVerify: 'Scanner pour vérifier l\'authenticité',
+    downloadVC: 'Télécharger VC (JSON)',
+    downloadPDF: 'Télécharger PDF',
+    addToWallet: 'Ajouter au portefeuille Inji',
+    offlineVerification: 'Vérification hors ligne disponible',
+
+    // Product Fields
+    productType: 'Type de produit',
+    product: 'Produit',
+    quantity: 'Quantité',
+    origin: 'Origine',
+    destination: 'Destination',
+    farmLocation: 'Emplacement de la ferme',
+    harvestDate: 'Date de récolte',
+    packagingDate: 'Date d\'emballage',
+
+    // Inspection Fields
+    inspection: 'Inspection',
+    inspections: 'Inspections',
+    inspectionRequests: 'Demandes d\'inspection',
+    pendingInspections: 'Inspections en attente',
+    recentInspections: 'Inspections récentes',
+    newRequests: 'Nouvelles demandes',
+    inProgress: 'En cours',
+    inspect: 'Inspecter',
+    grade: 'Grade',
+    moistureLevel: 'Niveau d\'humidité',
+    pesticideTest: 'Test de pesticides',
+    heavyMetals: 'Métaux lourds',
+    isoStandard: 'Norme ISO',
+    passedAllTests: 'Tous les tests réussis',
+
+    // Certificate Fields
+    issuingAuthority: 'Autorité émettrice',
+    issueDate: 'Date d\'émission',
+    issuedDate: 'Date d\'émission',
+    validUntil: 'Valide jusqu\'au',
+    certificateHash: 'Hash du certificat',
+    integrityHash: 'Hash d\'intégrité',
+
+    // Timeline
+    batchTimeline: 'Chronologie du lot',
+    batchJourney: 'Parcours du lot',
+    batchSubmitted: 'Lot soumis',
+    inspectionStarted: 'Inspection commencée',
+    inspectionCompleted: 'Inspection terminée',
+    certificateIssued: 'Certificat émis',
+    certificateVerified: 'Certificat vérifié',
+
+    // Verification
+    verificationSuccess: 'Vérification réussie',
+    verificationFailed: 'Vérification échouée',
+    tamperDetected: 'Altération détectée',
+    dataMismatch: 'Les données ne correspondent pas au hash stocké. Certificat invalide.',
+    integrityVerified: 'Intégrité des données vérifiée',
+    verifyCertificateDesc: 'Vérifiez instantanément l\'authenticité des certificats de qualité.',
+    enterCertificateId: 'Entrez l\'ID du certificat',
+    scanQR: 'Scanner QR',
+    scanQRCode: 'Scanner le code QR',
+    uploadQRImage: 'Télécharger l\'image QR',
+    uploadVCFile: 'Télécharger le fichier VC',
+    cameraScanner: 'Scanner caméra',
+    startCameraScan: 'Démarrer le scan caméra',
+    scanning: 'Scan en cours...',
+    scanAnother: 'Scanner un autre',
+
+    // Security
+    securityShield: 'Bouclier de sécurité',
+    tamperAlert: 'Alerte d\'altération',
+    certificateValid: 'Certificat valide',
+    certificateIntact: 'Intégrité du certificat intacte',
+    simulateTamper: 'Simuler une altération',
+    resetTamper: 'Réinitialiser',
+
+    // Offline
+    offlineMode: 'Mode hors ligne',
+    offlineVerifyDesc: 'Vérification de base disponible sans internet',
+    offlineReady: 'Prêt hors ligne',
+
+    // Users
+    users: 'Utilisateurs',
+    manageUsers: 'Gérer les utilisateurs',
+    totalExporters: 'Total exportateurs',
+    qaAgencies: 'Agences QA',
+
+    // Admin
+    revocations: 'Révocations',
+    viewRevocations: 'Voir les révocations',
+    auditLogs: 'Journaux d\'audit',
+    systemSettings: 'Paramètres système',
+    quickActions: 'Actions rapides',
+
+    // History
+    history: 'Historique',
+    verificationHistory: 'Historique de vérification',
+    viewHistory: 'Voir l\'historique',
+
+    // Form
+    selectProduct: 'Sélectionner le type de produit',
+    enterQuantity: 'Entrer la quantité',
+    selectOrigin: 'Sélectionner l\'état d\'origine',
+    enterDestination: 'Entrer la destination',
+    uploadImages: 'Télécharger des images',
+    uploadDocuments: 'Télécharger des documents',
+    dragAndDrop: 'Glisser-déposer ou cliquer pour télécharger',
+    submitting: 'Soumission...',
+    batchSubmittedSuccess: 'Lot soumis avec succès!',
+
+    // Misc
+    downloadReport: 'Télécharger le rapport',
+    awaitingInspection: 'En attente d\'inspection',
+    awaitingReview: 'En attente de révision',
+    date: 'Date',
+    role: 'Rôle',
+    email: 'Email',
+    name: 'Nom',
+  },
+  ar: {
+    // Common
+    dashboard: 'لوحة التحكم',
+    submit: 'إرسال',
+    cancel: 'إلغاء',
+    save: 'حفظ',
+    download: 'تحميل',
+    verify: 'تحقق',
+    back: 'رجوع',
+    view: 'عرض',
+    edit: 'تعديل',
+    delete: 'حذف',
+    status: 'الحالة',
+    actions: 'الإجراءات',
+    search: 'بحث',
+    filter: 'تصفية',
+    loading: 'جاري التحميل...',
+    noData: 'لا توجد بيانات',
+    success: 'نجاح',
+    error: 'خطأ',
+    warning: 'تحذير',
+    info: 'معلومات',
+
+    // Navigation
+    home: 'الرئيسية',
+    profile: 'الملف الشخصي',
+    settings: 'الإعدادات',
+    signIn: 'تسجيل الدخول',
+    signOut: 'تسجيل الخروج',
+    verifyCertificate: 'التحقق من الشهادة',
+
+    // Roles
+    exporter: 'مُصدِّر',
+    qaAgency: 'وكالة ضمان الجودة',
+    importer: 'مستورد',
+    admin: 'مسؤول',
+
+    // Dashboard Titles
+    exporterDashboard: 'لوحة تحكم المُصدِّر',
+    qaDashboard: 'لوحة تحكم ضمان الجودة',
+    importerDashboard: 'لوحة تحكم المستورد',
+    adminDashboard: 'لوحة تحكم المسؤول',
+    welcomeBack: 'مرحبًا بعودتك! إليك نظرة عامة.',
+
+    // Batch Related
+    batches: 'الدفعات',
+    batch: 'دفعة',
+    batchId: 'معرف الدفعة',
+    submitBatch: 'إرسال دفعة',
+    submitNewBatch: 'إرسال دفعة جديدة',
+    myBatches: 'دفعاتي',
+    allBatches: 'جميع الدفعات',
+    recentBatches: 'الدفعات الأخيرة',
+    totalBatches: 'إجمالي الدفعات',
+    pendingBatches: 'قيد الانتظار',
+    viewAll: 'عرض الكل',
+
+    // Statuses
+    submitted: 'مُرسَل',
+    underReview: 'قيد المراجعة',
+    inInspection: 'قيد الفحص',
+    inspected: 'مفحوص',
+    certified: 'معتمد',
+    rejected: 'مرفوض',
+    verified: 'تم التحقق',
+    valid: 'صالح',
+    invalid: 'غير صالح',
+    revoked: 'ملغى',
+    expired: 'منتهي الصلاحية',
+    pending: 'قيد الانتظار',
+    completed: 'مكتمل',
+
+    // Certificates
+    certificates: 'الشهادات',
+    certificate: 'شهادة',
+    certificateId: 'معرف الشهادة',
+    issuedCertificates: 'الشهادات الصادرة',
+    certificatesIssued: 'الشهادات الصادرة',
+    recentCertificates: 'الشهادات الأخيرة',
+    downloadCertificate: 'تحميل الشهادة',
+    viewCertificate: 'عرض الشهادة',
+
+    // Digital Passport
+    digitalProductPassport: 'جواز المنتج الرقمي',
+    verifiedCertificate: 'شهادة موثقة',
+    productDetails: 'تفاصيل المنتج',
+    inspectionResults: 'نتائج الفحص',
+    issuerInformation: 'معلومات الجهة المُصدِرة',
+    qualityScore: 'درجة الجودة',
+    certificateStamp: 'ختم الشهادة',
+    scanToVerify: 'امسح للتحقق من الأصالة',
+    downloadVC: 'تحميل VC (JSON)',
+    downloadPDF: 'تحميل PDF',
+    addToWallet: 'إضافة إلى محفظة Inji',
+    offlineVerification: 'التحقق دون اتصال متاح',
+
+    // Product Fields
+    productType: 'نوع المنتج',
+    product: 'المنتج',
+    quantity: 'الكمية',
+    origin: 'المنشأ',
+    destination: 'الوجهة',
+    farmLocation: 'موقع المزرعة',
+    harvestDate: 'تاريخ الحصاد',
+    packagingDate: 'تاريخ التعبئة',
+
+    // Inspection Fields
+    inspection: 'فحص',
+    inspections: 'الفحوصات',
+    inspectionRequests: 'طلبات الفحص',
+    pendingInspections: 'الفحوصات المعلقة',
+    recentInspections: 'الفحوصات الأخيرة',
+    newRequests: 'طلبات جديدة',
+    inProgress: 'قيد التنفيذ',
+    inspect: 'فحص',
+    grade: 'الدرجة',
+    moistureLevel: 'مستوى الرطوبة',
+    pesticideTest: 'اختبار المبيدات',
+    heavyMetals: 'المعادن الثقيلة',
+    isoStandard: 'معيار ISO',
+    passedAllTests: 'اجتاز جميع الاختبارات',
+
+    // Certificate Fields
+    issuingAuthority: 'الجهة المُصدِرة',
+    issueDate: 'تاريخ الإصدار',
+    issuedDate: 'تاريخ الإصدار',
+    validUntil: 'صالح حتى',
+    certificateHash: 'تجزئة الشهادة',
+    integrityHash: 'تجزئة السلامة',
+
+    // Timeline
+    batchTimeline: 'الجدول الزمني للدفعة',
+    batchJourney: 'رحلة الدفعة',
+    batchSubmitted: 'تم إرسال الدفعة',
+    inspectionStarted: 'بدأ الفحص',
+    inspectionCompleted: 'اكتمل الفحص',
+    certificateIssued: 'صدرت الشهادة',
+    certificateVerified: 'تم التحقق من الشهادة',
+
+    // Verification
+    verificationSuccess: 'نجح التحقق',
+    verificationFailed: 'فشل التحقق',
+    tamperDetected: 'تم اكتشاف عبث',
+    dataMismatch: 'البيانات لا تطابق التجزئة المخزنة. الشهادة غير صالحة.',
+    integrityVerified: 'تم التحقق من سلامة البيانات',
+    verifyCertificateDesc: 'تحقق فورًا من أصالة شهادات الجودة.',
+    enterCertificateId: 'أدخل معرف الشهادة',
+    scanQR: 'مسح QR',
+    scanQRCode: 'مسح رمز QR',
+    uploadQRImage: 'تحميل صورة QR',
+    uploadVCFile: 'تحميل ملف VC',
+    cameraScanner: 'ماسح الكاميرا',
+    startCameraScan: 'بدء مسح الكاميرا',
+    scanning: 'جاري المسح...',
+    scanAnother: 'مسح آخر',
+
+    // Security
+    securityShield: 'درع الأمان',
+    tamperAlert: 'تنبيه العبث',
+    certificateValid: 'الشهادة صالحة',
+    certificateIntact: 'سلامة الشهادة سليمة',
+    simulateTamper: 'محاكاة العبث',
+    resetTamper: 'إعادة تعيين',
+
+    // Offline
+    offlineMode: 'وضع عدم الاتصال',
+    offlineVerifyDesc: 'التحقق الأساسي متاح بدون إنترنت',
+    offlineReady: 'جاهز دون اتصال',
+
+    // Users
+    users: 'المستخدمون',
+    manageUsers: 'إدارة المستخدمين',
+    totalExporters: 'إجمالي المُصدِّرين',
+    qaAgencies: 'وكالات ضمان الجودة',
+
+    // Admin
+    revocations: 'الإلغاءات',
+    viewRevocations: 'عرض الإلغاءات',
+    auditLogs: 'سجلات التدقيق',
+    systemSettings: 'إعدادات النظام',
+    quickActions: 'إجراءات سريعة',
+
+    // History
+    history: 'السجل',
+    verificationHistory: 'سجل التحقق',
+    viewHistory: 'عرض السجل',
+
+    // Form
+    selectProduct: 'اختر نوع المنتج',
+    enterQuantity: 'أدخل الكمية',
+    selectOrigin: 'اختر ولاية المنشأ',
+    enterDestination: 'أدخل الوجهة',
+    uploadImages: 'تحميل الصور',
+    uploadDocuments: 'تحميل المستندات',
+    dragAndDrop: 'اسحب وأفلت أو انقر للتحميل',
+    submitting: 'جاري الإرسال...',
+    batchSubmittedSuccess: 'تم إرسال الدفعة بنجاح!',
+
+    // Misc
+    downloadReport: 'تحميل التقرير',
+    awaitingInspection: 'في انتظار الفحص',
+    awaitingReview: 'في انتظار المراجعة',
+    date: 'التاريخ',
+    role: 'الدور',
+    email: 'البريد الإلكتروني',
+    name: 'الاسم',
+  },
+  es: {
+    // Common
+    dashboard: 'Panel de control',
+    submit: 'Enviar',
+    cancel: 'Cancelar',
+    save: 'Guardar',
+    download: 'Descargar',
+    verify: 'Verificar',
+    back: 'Atrás',
+    view: 'Ver',
+    edit: 'Editar',
+    delete: 'Eliminar',
+    status: 'Estado',
+    actions: 'Acciones',
+    search: 'Buscar',
+    filter: 'Filtrar',
+    loading: 'Cargando...',
+    noData: 'No hay datos disponibles',
+    success: 'Éxito',
+    error: 'Error',
+    warning: 'Advertencia',
+    info: 'Información',
+
+    // Navigation
+    home: 'Inicio',
+    profile: 'Perfil',
+    settings: 'Configuración',
+    signIn: 'Iniciar sesión',
+    signOut: 'Cerrar sesión',
+    verifyCertificate: 'Verificar certificado',
+
+    // Roles
+    exporter: 'Exportador',
+    qaAgency: 'Agencia de control',
+    importer: 'Importador',
+    admin: 'Administrador',
+
+    // Dashboard Titles
+    exporterDashboard: 'Panel del exportador',
+    qaDashboard: 'Panel de control de calidad',
+    importerDashboard: 'Panel del importador',
+    adminDashboard: 'Panel de administración',
+    welcomeBack: '¡Bienvenido de nuevo! Aquí está tu resumen.',
+
+    // Batch Related
+    batches: 'Lotes',
+    batch: 'Lote',
+    batchId: 'ID del lote',
+    submitBatch: 'Enviar lote',
+    submitNewBatch: 'Enviar nuevo lote',
+    myBatches: 'Mis lotes',
+    allBatches: 'Todos los lotes',
+    recentBatches: 'Lotes recientes',
+    totalBatches: 'Total de lotes',
+    pendingBatches: 'Pendientes',
+    viewAll: 'Ver todo',
+
+    // Statuses
+    submitted: 'Enviado',
+    underReview: 'En revisión',
+    inInspection: 'En inspección',
+    inspected: 'Inspeccionado',
+    certified: 'Certificado',
+    rejected: 'Rechazado',
+    verified: 'Verificado',
+    valid: 'Válido',
+    invalid: 'Inválido',
+    revoked: 'Revocado',
+    expired: 'Expirado',
+    pending: 'Pendiente',
+    completed: 'Completado',
+
+    // Certificates
+    certificates: 'Certificados',
+    certificate: 'Certificado',
+    certificateId: 'ID del certificado',
+    issuedCertificates: 'Certificados emitidos',
+    certificatesIssued: 'Certificados emitidos',
+    recentCertificates: 'Certificados recientes',
+    downloadCertificate: 'Descargar certificado',
+    viewCertificate: 'Ver certificado',
+
+    // Digital Passport
+    digitalProductPassport: 'Pasaporte digital del producto',
+    verifiedCertificate: 'Certificado verificado',
+    productDetails: 'Detalles del producto',
+    inspectionResults: 'Resultados de inspección',
+    issuerInformation: 'Información del emisor',
+    qualityScore: 'Puntuación de calidad',
+    certificateStamp: 'Sello del certificado',
+    scanToVerify: 'Escanear para verificar autenticidad',
+    downloadVC: 'Descargar VC (JSON)',
+    downloadPDF: 'Descargar PDF',
+    addToWallet: 'Agregar a billetera Inji',
+    offlineVerification: 'Verificación sin conexión disponible',
+
+    // Product Fields
+    productType: 'Tipo de producto',
+    product: 'Producto',
+    quantity: 'Cantidad',
+    origin: 'Origen',
+    destination: 'Destino',
+    farmLocation: 'Ubicación de la granja',
+    harvestDate: 'Fecha de cosecha',
+    packagingDate: 'Fecha de empaque',
+
+    // Inspection Fields
+    inspection: 'Inspección',
+    inspections: 'Inspecciones',
+    inspectionRequests: 'Solicitudes de inspección',
+    pendingInspections: 'Inspecciones pendientes',
+    recentInspections: 'Inspecciones recientes',
+    newRequests: 'Nuevas solicitudes',
+    inProgress: 'En progreso',
+    inspect: 'Inspeccionar',
+    grade: 'Grado',
+    moistureLevel: 'Nivel de humedad',
+    pesticideTest: 'Prueba de pesticidas',
+    heavyMetals: 'Metales pesados',
+    isoStandard: 'Norma ISO',
+    passedAllTests: 'Pasó todas las pruebas',
+
+    // Certificate Fields
+    issuingAuthority: 'Autoridad emisora',
+    issueDate: 'Fecha de emisión',
+    issuedDate: 'Fecha de emisión',
+    validUntil: 'Válido hasta',
+    certificateHash: 'Hash del certificado',
+    integrityHash: 'Hash de integridad',
+
+    // Timeline
+    batchTimeline: 'Cronología del lote',
+    batchJourney: 'Recorrido del lote',
+    batchSubmitted: 'Lote enviado',
+    inspectionStarted: 'Inspección iniciada',
+    inspectionCompleted: 'Inspección completada',
+    certificateIssued: 'Certificado emitido',
+    certificateVerified: 'Certificado verificado',
+
+    // Verification
+    verificationSuccess: 'Verificación exitosa',
+    verificationFailed: 'Verificación fallida',
+    tamperDetected: 'Manipulación detectada',
+    dataMismatch: 'Los datos no coinciden con el hash almacenado. Certificado inválido.',
+    integrityVerified: 'Integridad de datos verificada',
+    verifyCertificateDesc: 'Verifique instantáneamente la autenticidad de los certificados de calidad.',
+    enterCertificateId: 'Ingrese el ID del certificado',
+    scanQR: 'Escanear QR',
+    scanQRCode: 'Escanear código QR',
+    uploadQRImage: 'Subir imagen QR',
+    uploadVCFile: 'Subir archivo VC',
+    cameraScanner: 'Escáner de cámara',
+    startCameraScan: 'Iniciar escaneo de cámara',
+    scanning: 'Escaneando...',
+    scanAnother: 'Escanear otro',
+
+    // Security
+    securityShield: 'Escudo de seguridad',
+    tamperAlert: 'Alerta de manipulación',
+    certificateValid: 'Certificado válido',
+    certificateIntact: 'Integridad del certificado intacta',
+    simulateTamper: 'Simular manipulación',
+    resetTamper: 'Restablecer',
+
+    // Offline
+    offlineMode: 'Modo sin conexión',
+    offlineVerifyDesc: 'Verificación básica disponible sin internet',
+    offlineReady: 'Listo sin conexión',
+
+    // Users
+    users: 'Usuarios',
+    manageUsers: 'Administrar usuarios',
+    totalExporters: 'Total de exportadores',
+    qaAgencies: 'Agencias de control',
+
+    // Admin
+    revocations: 'Revocaciones',
+    viewRevocations: 'Ver revocaciones',
+    auditLogs: 'Registros de auditoría',
+    systemSettings: 'Configuración del sistema',
+    quickActions: 'Acciones rápidas',
+
+    // History
+    history: 'Historial',
+    verificationHistory: 'Historial de verificación',
+    viewHistory: 'Ver historial',
+
+    // Form
+    selectProduct: 'Seleccionar tipo de producto',
+    enterQuantity: 'Ingresar cantidad',
+    selectOrigin: 'Seleccionar estado de origen',
+    enterDestination: 'Ingresar destino',
+    uploadImages: 'Subir imágenes',
+    uploadDocuments: 'Subir documentos',
+    dragAndDrop: 'Arrastrar y soltar o hacer clic para subir',
+    submitting: 'Enviando...',
+    batchSubmittedSuccess: '¡Lote enviado exitosamente!',
+
+    // Misc
+    downloadReport: 'Descargar informe',
+    awaitingInspection: 'Esperando inspección',
+    awaitingReview: 'Esperando revisión',
+    date: 'Fecha',
+    role: 'Rol',
+    email: 'Correo electrónico',
+    name: 'Nombre',
+  },
+  si: {
+    // Common
+    dashboard: 'උපකරණ පුවරුව',
+    submit: 'ඉදිරිපත් කරන්න',
+    cancel: 'අවලංගු කරන්න',
+    save: 'සුරකින්න',
+    download: 'බාගන්න',
+    verify: 'සත්‍යාපනය කරන්න',
+    back: 'ආපසු',
+    view: 'බලන්න',
+    edit: 'සංස්කරණය කරන්න',
+    delete: 'මකන්න',
+    status: 'තත්ත්වය',
+    actions: 'ක්‍රියා',
+    search: 'සොයන්න',
+    filter: 'පෙරහන',
+    loading: 'පූරණය වෙමින්...',
+    noData: 'දත්ත නොමැත',
+    success: 'සාර්ථකයි',
+    error: 'දෝෂයකි',
+    warning: 'අනතුරු ඇඟවීමකි',
+    info: 'තොරතුරු',
+
+    // Navigation
+    home: 'මුල් පිටුව',
+    profile: 'පැතිකඩ',
+    settings: 'සැකසුම්',
+    signIn: 'පුරන්න',
+    signOut: 'ඉවත් වන්න',
+    verifyCertificate: 'සහතිකය සත්‍යාපනය කරන්න',
+
+    // Roles
+    exporter: 'අපනයනකරු',
+    qaAgency: 'ගුණාත්මක ආයතනය',
+    importer: 'ආනයනකරු',
+    admin: 'පරිපාලක',
+
+    // Dashboard Titles
+    exporterDashboard: 'අපනයනකරු උපකරණ පුවරුව',
+    qaDashboard: 'ගුණාත්මක උපකරණ පුවරුව',
+    importerDashboard: 'ආනයනකරු උපකරණ පුවරුව',
+    adminDashboard: 'පරිපාලක උපකරණ පුවරුව',
+    welcomeBack: 'නැවත සාදරයෙන් පිළිගනිමු! මෙන්න ඔබේ දළ විශ්ලේෂණය.',
+
+    // Batch Related
+    batches: 'කණ්ඩායම්',
+    batch: 'කණ්ඩායමක්',
+    batchId: 'කණ්ඩායම් හැඳුනුම්පත',
+    submitBatch: 'කණ්ඩායම ඉදිරිපත් කරන්න',
+    submitNewBatch: 'නව කණ්ඩායමක් ඉදිරිපත් කරන්න',
+    myBatches: 'මගේ කණ්ඩායම්',
+    allBatches: 'සියලුම කණ්ඩායම්',
+    recentBatches: 'මෑත කණ්ඩායම්',
+    totalBatches: 'සම්පූර්ණ කණ්ඩායම්',
+    pendingBatches: 'පොරොත්තු',
+    viewAll: 'සියල්ල බලන්න',
+
+    // Statuses
+    submitted: 'ඉදිරිපත් කළා',
+    underReview: 'සමාලෝචනයේ',
+    inInspection: 'පරීක්ෂණයේ',
+    inspected: 'පරීක්ෂා කළා',
+    certified: 'සහතික කළා',
+    rejected: 'ප්‍රතික්ෂේප කළා',
+    verified: 'සත්‍යාපනය කළා',
+    valid: 'වලංගු',
+    invalid: 'අවලංගු',
+    revoked: 'අවලංගු කළා',
+    expired: 'කල් ඉකුත් වූ',
+    pending: 'පොරොත්තු',
+    completed: 'සම්පූර්ණ',
+
+    // Certificates
+    certificates: 'සහතික',
+    certificate: 'සහතිකය',
+    certificateId: 'සහතික හැඳුනුම්පත',
+    issuedCertificates: 'නිකුත් කළ සහතික',
+    certificatesIssued: 'නිකුත් කළ සහතික',
+    recentCertificates: 'මෑත සහතික',
+    downloadCertificate: 'සහතිකය බාගන්න',
+    viewCertificate: 'සහතිකය බලන්න',
+
+    // Digital Passport
+    digitalProductPassport: 'ඩිජිටල් නිෂ්පාදන විදේශ ගමන් බලපත්‍රය',
+    verifiedCertificate: 'සත්‍යාපිත සහතිකය',
+    productDetails: 'නිෂ්පාදන විස්තර',
+    inspectionResults: 'පරීක්ෂණ ප්‍රතිඵල',
+    issuerInformation: 'නිකුත් කරන්නාගේ තොරතුරු',
+    qualityScore: 'ගුණාත්මක ලකුණු',
+    certificateStamp: 'සහතික මුද්‍රාව',
+    scanToVerify: 'සත්‍යතාවය සත්‍යාපනය කිරීමට ස්කෑන් කරන්න',
+    downloadVC: 'VC බාගන්න (JSON)',
+    downloadPDF: 'PDF බාගන්න',
+    addToWallet: 'Inji පසුම්බියට එකතු කරන්න',
+    offlineVerification: 'නොබැඳි සත්‍යාපනය ලබා ගත හැකිය',
+
+    // Product Fields
+    productType: 'නිෂ්පාදන වර්ගය',
+    product: 'නිෂ්පාදනය',
+    quantity: 'ප්‍රමාණය',
+    origin: 'මූලාරම්භය',
+    destination: 'ගමනාන්තය',
+    farmLocation: 'ගොවිපල ස්ථානය',
+    harvestDate: 'අස්වනු නෙලීමේ දිනය',
+    packagingDate: 'ඇසුරුම් දිනය',
+
+    // Inspection Fields
+    inspection: 'පරීක්ෂණය',
+    inspections: 'පරීක්ෂණ',
+    inspectionRequests: 'පරීක්ෂණ ඉල්ලීම්',
+    pendingInspections: 'පොරොත්තු පරීක්ෂණ',
+    recentInspections: 'මෑත පරීක්ෂණ',
+    newRequests: 'නව ඉල්ලීම්',
+    inProgress: 'ක්‍රියාත්මකයි',
+    inspect: 'පරීක්ෂා කරන්න',
+    grade: 'ශ්‍රේණිය',
+    moistureLevel: 'තෙතමනය මට්ටම',
+    pesticideTest: 'පළිබෝධනාශක පරීක්ෂණය',
+    heavyMetals: 'බර ලෝහ',
+    isoStandard: 'ISO ප්‍රමිතිය',
+    passedAllTests: 'සියලු පරීක්ෂණ සමත්',
+
+    // Certificate Fields
+    issuingAuthority: 'නිකුත් කරන අධිකාරිය',
+    issueDate: 'නිකුත් කළ දිනය',
+    issuedDate: 'නිකුත් කළ දිනය',
+    validUntil: 'වලංගු දක්වා',
+    certificateHash: 'සහතික හෑෂ්',
+    integrityHash: 'අඛණ්ඩතා හෑෂ්',
+
+    // Timeline
+    batchTimeline: 'කණ්ඩායම් කාලරේඛාව',
+    batchJourney: 'කණ්ඩායම් ගමන',
+    batchSubmitted: 'කණ්ඩායම ඉදිරිපත් කළා',
+    inspectionStarted: 'පරීක්ෂණය ආරම්භ කළා',
+    inspectionCompleted: 'පරීක්ෂණය සම්පූර්ණ කළා',
+    certificateIssued: 'සහතිකය නිකුත් කළා',
+    certificateVerified: 'සහතිකය සත්‍යාපනය කළා',
+
+    // Verification
+    verificationSuccess: 'සත්‍යාපනය සාර්ථකයි',
+    verificationFailed: 'සත්‍යාපනය අසාර්ථකයි',
+    tamperDetected: 'විකෘතිය අනාවරණය විය',
+    dataMismatch: 'දත්ත ගබඩා කළ හෑෂ් සමඟ නොගැලපේ. සහතිකය අවලංගුයි.',
+    integrityVerified: 'දත්ත අඛණ්ඩතාවය සත්‍යාපනය කළා',
+    verifyCertificateDesc: 'ගුණාත්මක සහතිකවල සත්‍යතාවය ක්ෂණිකව සත්‍යාපනය කරන්න.',
+    enterCertificateId: 'සහතික හැඳුනුම්පත ඇතුළත් කරන්න',
+    scanQR: 'QR ස්කෑන් කරන්න',
+    scanQRCode: 'QR කේතය ස්කෑන් කරන්න',
+    uploadQRImage: 'QR රූපය උඩුගත කරන්න',
+    uploadVCFile: 'VC ගොනුව උඩුගත කරන්න',
+    cameraScanner: 'කැමරා ස්කෑනරය',
+    startCameraScan: 'කැමරා ස්කෑන් ආරම්භ කරන්න',
+    scanning: 'ස්කෑන් කරමින්...',
+    scanAnother: 'තවත් එකක් ස්කෑන් කරන්න',
+
+    // Security
+    securityShield: 'ආරක්ෂක පලිහ',
+    tamperAlert: 'විකෘති අනතුරු ඇඟවීම',
+    certificateValid: 'සහතිකය වලංගුයි',
+    certificateIntact: 'සහතික අඛණ්ඩතාවය නොවෙනස්',
+    simulateTamper: 'විකෘතිය අනුකරණය කරන්න',
+    resetTamper: 'යළි පිහිටුවන්න',
+
+    // Offline
+    offlineMode: 'නොබැඳි ප්‍රකාරය',
+    offlineVerifyDesc: 'අන්තර්ජාලය නොමැතිව මූලික සත්‍යාපනය ලබා ගත හැකිය',
+    offlineReady: 'නොබැඳි සූදානම්',
+
+    // Users
+    users: 'පරිශීලකයින්',
+    manageUsers: 'පරිශීලකයින් කළමනාකරණය කරන්න',
+    totalExporters: 'සම්පූර්ණ අපනයනකරුවන්',
+    qaAgencies: 'ගුණාත්මක ආයතන',
+
+    // Admin
+    revocations: 'අවලංගු කිරීම්',
+    viewRevocations: 'අවලංගු කිරීම් බලන්න',
+    auditLogs: 'විගණන ලොග්',
+    systemSettings: 'පද්ධති සැකසුම්',
+    quickActions: 'ඉක්මන් ක්‍රියා',
+
+    // History
+    history: 'ඉතිහාසය',
+    verificationHistory: 'සත්‍යාපන ඉතිහාසය',
+    viewHistory: 'ඉතිහාසය බලන්න',
+
+    // Form
+    selectProduct: 'නිෂ්පාදන වර්ගය තෝරන්න',
+    enterQuantity: 'ප්‍රමාණය ඇතුළත් කරන්න',
+    selectOrigin: 'මූලාරම්භ ප්‍රාන්තය තෝරන්න',
+    enterDestination: 'ගමනාන්තය ඇතුළත් කරන්න',
+    uploadImages: 'රූප උඩුගත කරන්න',
+    uploadDocuments: 'ලේඛන උඩුගත කරන්න',
+    dragAndDrop: 'ඇදගෙන දමන්න හෝ උඩුගත කිරීමට ක්ලික් කරන්න',
+    submitting: 'ඉදිරිපත් කරමින්...',
+    batchSubmittedSuccess: 'කණ්ඩායම සාර්ථකව ඉදිරිපත් කළා!',
+
+    // Misc
+    downloadReport: 'වාර්තාව බාගන්න',
+    awaitingInspection: 'පරීක්ෂණය බලාපොරොත්තුවෙන්',
+    awaitingReview: 'සමාලෝචනය බලාපොරොත්තුවෙන්',
+    date: 'දිනය',
+    role: 'භූමිකාව',
+    email: 'විද්‍යුත් තැපෑල',
+    name: 'නම',
+  },
+  pt: {
+    // Common
+    dashboard: 'Painel',
+    submit: 'Enviar',
+    cancel: 'Cancelar',
+    save: 'Salvar',
+    download: 'Baixar',
+    verify: 'Verificar',
+    back: 'Voltar',
+    view: 'Ver',
+    edit: 'Editar',
+    delete: 'Excluir',
+    status: 'Status',
+    actions: 'Ações',
+    search: 'Pesquisar',
+    filter: 'Filtrar',
+    loading: 'Carregando...',
+    noData: 'Nenhum dado disponível',
+    success: 'Sucesso',
+    error: 'Erro',
+    warning: 'Aviso',
+    info: 'Informação',
+
+    // Navigation
+    home: 'Início',
+    profile: 'Perfil',
+    settings: 'Configurações',
+    signIn: 'Entrar',
+    signOut: 'Sair',
+    verifyCertificate: 'Verificar certificado',
+
+    // Roles
+    exporter: 'Exportador',
+    qaAgency: 'Agência de qualidade',
+    importer: 'Importador',
+    admin: 'Administrador',
+
+    // Dashboard Titles
+    exporterDashboard: 'Painel do exportador',
+    qaDashboard: 'Painel de qualidade',
+    importerDashboard: 'Painel do importador',
+    adminDashboard: 'Painel de administração',
+    welcomeBack: 'Bem-vindo de volta! Aqui está sua visão geral.',
+
+    // Batch Related
+    batches: 'Lotes',
+    batch: 'Lote',
+    batchId: 'ID do lote',
+    submitBatch: 'Enviar lote',
+    submitNewBatch: 'Enviar novo lote',
+    myBatches: 'Meus lotes',
+    allBatches: 'Todos os lotes',
+    recentBatches: 'Lotes recentes',
+    totalBatches: 'Total de lotes',
+    pendingBatches: 'Pendentes',
+    viewAll: 'Ver tudo',
+
+    // Statuses
+    submitted: 'Enviado',
+    underReview: 'Em revisão',
+    inInspection: 'Em inspeção',
+    inspected: 'Inspecionado',
+    certified: 'Certificado',
+    rejected: 'Rejeitado',
+    verified: 'Verificado',
+    valid: 'Válido',
+    invalid: 'Inválido',
+    revoked: 'Revogado',
+    expired: 'Expirado',
+    pending: 'Pendente',
+    completed: 'Concluído',
+
+    // Certificates
+    certificates: 'Certificados',
+    certificate: 'Certificado',
+    certificateId: 'ID do certificado',
+    issuedCertificates: 'Certificados emitidos',
+    certificatesIssued: 'Certificados emitidos',
+    recentCertificates: 'Certificados recentes',
+    downloadCertificate: 'Baixar certificado',
+    viewCertificate: 'Ver certificado',
+
+    // Digital Passport
+    digitalProductPassport: 'Passaporte digital do produto',
+    verifiedCertificate: 'Certificado verificado',
+    productDetails: 'Detalhes do produto',
+    inspectionResults: 'Resultados da inspeção',
+    issuerInformation: 'Informações do emissor',
+    qualityScore: 'Pontuação de qualidade',
+    certificateStamp: 'Selo do certificado',
+    scanToVerify: 'Escaneie para verificar autenticidade',
+    downloadVC: 'Baixar VC (JSON)',
+    downloadPDF: 'Baixar PDF',
+    addToWallet: 'Adicionar à carteira Inji',
+    offlineVerification: 'Verificação offline disponível',
+
+    // Product Fields
+    productType: 'Tipo de produto',
+    product: 'Produto',
+    quantity: 'Quantidade',
+    origin: 'Origem',
+    destination: 'Destino',
+    farmLocation: 'Localização da fazenda',
+    harvestDate: 'Data da colheita',
+    packagingDate: 'Data de embalagem',
+
+    // Inspection Fields
+    inspection: 'Inspeção',
+    inspections: 'Inspeções',
+    inspectionRequests: 'Solicitações de inspeção',
+    pendingInspections: 'Inspeções pendentes',
+    recentInspections: 'Inspeções recentes',
+    newRequests: 'Novas solicitações',
+    inProgress: 'Em andamento',
+    inspect: 'Inspecionar',
+    grade: 'Grau',
+    moistureLevel: 'Nível de umidade',
+    pesticideTest: 'Teste de pesticidas',
+    heavyMetals: 'Metais pesados',
+    isoStandard: 'Padrão ISO',
+    passedAllTests: 'Passou em todos os testes',
+
+    // Certificate Fields
+    issuingAuthority: 'Autoridade emissora',
+    issueDate: 'Data de emissão',
+    issuedDate: 'Data de emissão',
+    validUntil: 'Válido até',
+    certificateHash: 'Hash do certificado',
+    integrityHash: 'Hash de integridade',
+
+    // Timeline
+    batchTimeline: 'Linha do tempo do lote',
+    batchJourney: 'Jornada do lote',
+    batchSubmitted: 'Lote enviado',
+    inspectionStarted: 'Inspeção iniciada',
+    inspectionCompleted: 'Inspeção concluída',
+    certificateIssued: 'Certificado emitido',
+    certificateVerified: 'Certificado verificado',
+
+    // Verification
+    verificationSuccess: 'Verificação bem-sucedida',
+    verificationFailed: 'Verificação falhou',
+    tamperDetected: 'Adulteração detectada',
+    dataMismatch: 'Os dados não correspondem ao hash armazenado. Certificado inválido.',
+    integrityVerified: 'Integridade dos dados verificada',
+    verifyCertificateDesc: 'Verifique instantaneamente a autenticidade dos certificados de qualidade.',
+    enterCertificateId: 'Digite o ID do certificado',
+    scanQR: 'Escanear QR',
+    scanQRCode: 'Escanear código QR',
+    uploadQRImage: 'Carregar imagem QR',
+    uploadVCFile: 'Carregar arquivo VC',
+    cameraScanner: 'Scanner de câmera',
+    startCameraScan: 'Iniciar escaneamento de câmera',
+    scanning: 'Escaneando...',
+    scanAnother: 'Escanear outro',
+
+    // Security
+    securityShield: 'Escudo de segurança',
+    tamperAlert: 'Alerta de adulteração',
+    certificateValid: 'Certificado válido',
+    certificateIntact: 'Integridade do certificado intacta',
+    simulateTamper: 'Simular adulteração',
+    resetTamper: 'Redefinir',
+
+    // Offline
+    offlineMode: 'Modo offline',
+    offlineVerifyDesc: 'Verificação básica disponível sem internet',
+    offlineReady: 'Pronto para offline',
+
+    // Users
+    users: 'Usuários',
+    manageUsers: 'Gerenciar usuários',
+    totalExporters: 'Total de exportadores',
+    qaAgencies: 'Agências de qualidade',
+
+    // Admin
+    revocations: 'Revogações',
+    viewRevocations: 'Ver revogações',
+    auditLogs: 'Logs de auditoria',
+    systemSettings: 'Configurações do sistema',
+    quickActions: 'Ações rápidas',
+
+    // History
+    history: 'Histórico',
+    verificationHistory: 'Histórico de verificação',
+    viewHistory: 'Ver histórico',
+
+    // Form
+    selectProduct: 'Selecionar tipo de produto',
+    enterQuantity: 'Inserir quantidade',
+    selectOrigin: 'Selecionar estado de origem',
+    enterDestination: 'Inserir destino',
+    uploadImages: 'Carregar imagens',
+    uploadDocuments: 'Carregar documentos',
+    dragAndDrop: 'Arrastar e soltar ou clicar para carregar',
+    submitting: 'Enviando...',
+    batchSubmittedSuccess: 'Lote enviado com sucesso!',
+
+    // Misc
+    downloadReport: 'Baixar relatório',
+    awaitingInspection: 'Aguardando inspeção',
+    awaitingReview: 'Aguardando revisão',
+    date: 'Data',
+    role: 'Função',
+    email: 'E-mail',
+    name: 'Nome',
   },
 };
 

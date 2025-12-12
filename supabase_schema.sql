@@ -35,6 +35,7 @@ create table public.certificates (
   valid_until timestamp with time zone not null,
   status text check (status in ('VALID', 'REVOKED', 'EXPIRED')) default 'VALID',
   vc_data jsonb,
+  qr_base64 text, -- Inji-generated QR code (data:image/png;base64,...)
   metadata jsonb,
   issuer text default 'National Quality Agency',
   hash text,

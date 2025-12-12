@@ -93,6 +93,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const logout = useCallback(() => {
     setUser(null);
     localStorage.removeItem('auth_user');
+    // Redirect to sign-in page
+    window.location.href = '/auth';
   }, []);
 
   const switchRole = useCallback(async (role: UserRole) => {

@@ -8,7 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { toast } from 'sonner';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Upload, Package, X, FileText, Image } from 'lucide-react';
+import { Upload, Package, X, FileText, Image, Loader2 } from 'lucide-react';
 import { storage } from '@/lib/storage';
 
 export default function SubmitBatch() {
@@ -115,22 +115,22 @@ export default function SubmitBatch() {
 
   return (
     <DashboardLayout>
-      <div className="max-w-2xl">
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-foreground">{t('submitNewBatch')}</h1>
-          <p className="text-muted-foreground">{t('welcomeBack')}</p>
+      <div className="max-w-2xl mx-auto">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-xl sm:text-2xl font-bold text-foreground">{t('submitNewBatch')}</h1>
+          <p className="text-sm sm:text-base text-muted-foreground">{t('welcomeBack')}</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="rounded-xl border border-border bg-card p-6 space-y-4">
-            <h2 className="font-semibold text-card-foreground flex items-center gap-2">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+          <div className="rounded-xl border border-border bg-card p-4 sm:p-6 space-y-4">
+            <h2 className="font-semibold text-card-foreground flex items-center gap-2 text-base sm:text-lg">
               <Package className="h-5 w-5 text-primary" />
               {t('productDetails')}
             </h2>
 
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="productType">{t('productType')} *</Label>
+                <Label htmlFor="productType" className="text-xs sm:text-sm">{t('productType')} *</Label>
                 <Select
                   value={formData.productType}
                   onValueChange={(value) => {
@@ -154,11 +154,11 @@ export default function SubmitBatch() {
                     <SelectItem value="other">Other</SelectItem>
                   </SelectContent>
                 </Select>
-                {errors.productType && <p className="text-sm text-destructive">{errors.productType}</p>}
+                {errors.productType && <p className="text-xs text-destructive">{errors.productType}</p>}
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="quantity">{t('quantity')} *</Label>
+                <Label htmlFor="quantity" className="text-xs sm:text-sm">{t('quantity')} *</Label>
                 <Input
                   id="quantity"
                   placeholder={t('enterQuantity')}
@@ -169,12 +169,12 @@ export default function SubmitBatch() {
                   }}
                   className={errors.quantity ? 'border-destructive' : ''}
                 />
-                {errors.quantity && <p className="text-sm text-destructive">{errors.quantity}</p>}
+                {errors.quantity && <p className="text-xs text-destructive">{errors.quantity}</p>}
               </div>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="farmLocation">{t('farmLocation')} *</Label>
+              <Label htmlFor="farmLocation" className="text-xs sm:text-sm">{t('farmLocation')} *</Label>
               <Input
                 id="farmLocation"
                 placeholder={t('selectOrigin')}
@@ -185,11 +185,11 @@ export default function SubmitBatch() {
                 }}
                 className={errors.farmLocation ? 'border-destructive' : ''}
               />
-              {errors.farmLocation && <p className="text-sm text-destructive">{errors.farmLocation}</p>}
+              {errors.farmLocation && <p className="text-xs text-destructive">{errors.farmLocation}</p>}
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="destination">{t('destination')} *</Label>
+              <Label htmlFor="destination" className="text-xs sm:text-sm">{t('destination')} *</Label>
               <Select
                 value={formData.destination}
                 onValueChange={(value) => {
@@ -213,19 +213,19 @@ export default function SubmitBatch() {
                   <SelectItem value="other">Other</SelectItem>
                 </SelectContent>
               </Select>
-              {errors.destination && <p className="text-sm text-destructive">{errors.destination}</p>}
+              {errors.destination && <p className="text-xs text-destructive">{errors.destination}</p>}
             </div>
           </div>
 
-          <div className="rounded-xl border border-border bg-card p-6 space-y-4">
-            <h2 className="font-semibold text-card-foreground flex items-center gap-2">
+          <div className="rounded-xl border border-border bg-card p-4 sm:p-6 space-y-4">
+            <h2 className="font-semibold text-card-foreground flex items-center gap-2 text-base sm:text-lg">
               <Upload className="h-5 w-5 text-primary" />
               {t('uploadDocuments')}
             </h2>
 
             <div className="space-y-2">
-              <Label>{t('uploadImages')} (Max 5)</Label>
-              <div className="border-2 border-dashed border-border rounded-lg p-6 text-center hover:border-primary/50 transition-colors">
+              <Label className="text-xs sm:text-sm">{t('uploadImages')} (Max 5)</Label>
+              <div className="border-2 border-dashed border-border rounded-lg p-4 sm:p-6 text-center hover:border-primary/50 transition-colors">
                 <input
                   type="file"
                   accept="image/*"
@@ -234,18 +234,18 @@ export default function SubmitBatch() {
                   className="hidden"
                   id="image-upload"
                 />
-                <label htmlFor="image-upload" className="cursor-pointer">
-                  <Image className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
-                  <p className="text-sm text-muted-foreground">{t('dragAndDrop')}</p>
+                <label htmlFor="image-upload" className="cursor-pointer block">
+                  <Image className="h-6 w-6 sm:h-8 sm:w-8 text-muted-foreground mx-auto mb-2" />
+                  <p className="text-xs sm:text-sm text-muted-foreground">{t('dragAndDrop')}</p>
                 </label>
               </div>
               {images.length > 0 && (
                 <div className="flex flex-wrap gap-2 mt-3">
                   {images.map((file, index) => (
-                    <div key={index} className="flex items-center gap-2 bg-muted/50 px-3 py-1.5 rounded-lg">
-                      <Image className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm truncate max-w-[150px]">{file.name}</span>
-                      <button type="button" onClick={() => removeImage(index)} className="text-muted-foreground hover:text-destructive">
+                    <div key={index} className="flex items-center gap-2 bg-muted/50 px-3 py-1.5 rounded-lg max-w-full">
+                      <Image className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                      <span className="text-xs sm:text-sm truncate max-w-[120px] sm:max-w-[150px]">{file.name}</span>
+                      <button type="button" onClick={() => removeImage(index)} className="text-muted-foreground hover:text-destructive flex-shrink-0">
                         <X className="h-4 w-4" />
                       </button>
                     </div>
@@ -255,8 +255,8 @@ export default function SubmitBatch() {
             </div>
 
             <div className="space-y-2">
-              <Label>{t('uploadDocuments')} (PDF, Max 5)</Label>
-              <div className="border-2 border-dashed border-border rounded-lg p-6 text-center hover:border-primary/50 transition-colors">
+              <Label className="text-xs sm:text-sm">{t('uploadDocuments')} (PDF, Max 5)</Label>
+              <div className="border-2 border-dashed border-border rounded-lg p-4 sm:p-6 text-center hover:border-primary/50 transition-colors">
                 <input
                   type="file"
                   accept=".pdf"
@@ -265,18 +265,18 @@ export default function SubmitBatch() {
                   className="hidden"
                   id="document-upload"
                 />
-                <label htmlFor="document-upload" className="cursor-pointer">
-                  <FileText className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
-                  <p className="text-sm text-muted-foreground">{t('dragAndDrop')}</p>
+                <label htmlFor="document-upload" className="cursor-pointer block">
+                  <FileText className="h-6 w-6 sm:h-8 sm:w-8 text-muted-foreground mx-auto mb-2" />
+                  <p className="text-xs sm:text-sm text-muted-foreground">{t('dragAndDrop')}</p>
                 </label>
               </div>
               {documents.length > 0 && (
                 <div className="flex flex-wrap gap-2 mt-3">
                   {documents.map((file, index) => (
-                    <div key={index} className="flex items-center gap-2 bg-muted/50 px-3 py-1.5 rounded-lg">
-                      <FileText className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm truncate max-w-[150px]">{file.name}</span>
-                      <button type="button" onClick={() => removeDocument(index)} className="text-muted-foreground hover:text-destructive">
+                    <div key={index} className="flex items-center gap-2 bg-muted/50 px-3 py-1.5 rounded-lg max-w-full">
+                      <FileText className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                      <span className="text-xs sm:text-sm truncate max-w-[120px] sm:max-w-[150px]">{file.name}</span>
+                      <button type="button" onClick={() => removeDocument(index)} className="text-muted-foreground hover:text-destructive flex-shrink-0">
                         <X className="h-4 w-4" />
                       </button>
                     </div>
@@ -286,12 +286,12 @@ export default function SubmitBatch() {
             </div>
           </div>
 
-          <div className="flex gap-4">
-            <Button type="button" variant="outline" onClick={() => navigate(-1)}>
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
+            <Button type="button" variant="outline" onClick={() => navigate(-1)} className="w-full sm:w-auto order-2 sm:order-1">
               {t('cancel')}
             </Button>
-            <Button type="submit" disabled={isSubmitting}>
-              {isSubmitting ? t('submitting') : t('submit')}
+            <Button type="submit" disabled={isSubmitting} className="w-full sm:w-auto order-1 sm:order-2">
+              {isSubmitting ? <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> {t('submitting')}</> : t('submit')}
             </Button>
           </div>
         </form>

@@ -90,20 +90,20 @@ export default function Verify() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <div className="container py-16">
+      <div className="container py-8 sm:py-12 md:py-16 px-4">
         <div className="mx-auto max-w-2xl">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-primary/10 mb-6">
-              <QrCode className="h-8 w-8 text-primary" />
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="inline-flex items-center justify-center h-14 w-14 sm:h-16 sm:w-16 rounded-2xl bg-primary/10 mb-4 sm:mb-6">
+              <QrCode className="h-7 w-7 sm:h-8 sm:w-8 text-primary" />
             </div>
-            <h1 className="text-3xl font-bold text-foreground mb-3">Verify Certificate</h1>
-            <p className="text-muted-foreground">
+            <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2 sm:mb-3">Verify Certificate</h1>
+            <p className="text-sm sm:text-base text-muted-foreground px-4">
               Enter a certificate ID or scan a QR code to verify authenticity
             </p>
           </div>
 
-          <div className="rounded-2xl border border-border bg-card p-8 shadow-soft mb-8">
-            <div className="flex gap-3">
+          <div className="rounded-2xl border border-border bg-card p-4 sm:p-6 md:p-8 shadow-soft mb-6 sm:mb-8">
+            <div className="flex flex-col sm:flex-row gap-3">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
@@ -114,7 +114,7 @@ export default function Verify() {
                   onKeyDown={(e) => e.key === 'Enter' && handleVerify()}
                 />
               </div>
-              <Button onClick={() => handleVerify()} disabled={!certificateId.trim() || isVerifying}>
+              <Button onClick={() => handleVerify()} disabled={!certificateId.trim() || isVerifying} className="w-full sm:w-auto">
                 {isVerifying ? <Loader2 className="h-4 w-4 animate-spin" /> : 'Verify'}
               </Button>
             </div>
@@ -123,28 +123,28 @@ export default function Verify() {
           {/* Verification Result */}
           {verificationResult === 'valid' && certificateData && batchData && (
             <>
-              <div className="rounded-2xl border border-success/30 bg-success/5 p-8 animate-fade-in">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="h-12 w-12 rounded-full bg-success/20 flex items-center justify-center">
-                    <CheckCircle className="h-6 w-6 text-success" />
+              <div className="rounded-2xl border border-success/30 bg-success/5 p-6 sm:p-8 animate-fade-in">
+                <div className="flex items-center gap-3 mb-4 sm:mb-6">
+                  <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-success/20 flex items-center justify-center flex-shrink-0">
+                    <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-success" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-foreground">Certificate Verified</h3>
-                    <p className="text-sm text-muted-foreground">Trusted by Inji Verify</p>
+                    <h3 className="text-lg sm:text-xl font-semibold text-foreground">Certificate Verified</h3>
+                    <p className="text-xs sm:text-sm text-muted-foreground">Trusted by Inji Verify</p>
                   </div>
                 </div>
 
                 <div className="grid gap-4">
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div className="flex items-start gap-3 p-4 rounded-xl bg-card border border-border">
-                      <FileText className="h-5 w-5 text-primary mt-0.5" />
-                      <div>
+                  <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+                    <div className="flex items-start gap-3 p-3 sm:p-4 rounded-xl bg-card border border-border">
+                      <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <div className="min-w-0">
                         <p className="text-xs text-muted-foreground">Certificate ID</p>
-                        <p className="font-semibold text-card-foreground text-sm">{certificateData.id}</p>
+                        <p className="font-semibold text-card-foreground text-sm truncate">{certificateData.id}</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-3 p-4 rounded-xl bg-card border border-border">
-                      <Award className="h-5 w-5 text-primary mt-0.5" />
+                    <div className="flex items-start gap-3 p-3 sm:p-4 rounded-xl bg-card border border-border">
+                      <Award className="h-4 w-4 sm:h-5 sm:w-5 text-primary mt-0.5 flex-shrink-0" />
                       <div>
                         <p className="text-xs text-muted-foreground">Grade</p>
                         <p className="font-semibold text-success">{inspection?.grade || 'N/A'}</p>
@@ -152,28 +152,28 @@ export default function Verify() {
                     </div>
                   </div>
 
-                  <div className="p-4 rounded-xl bg-card border border-border space-y-3">
-                    <div className="flex justify-between">
-                      <span className="text-sm text-muted-foreground">Product</span>
-                      <span className="text-sm font-medium text-card-foreground">{batchData.productType}</span>
+                  <div className="p-3 sm:p-4 rounded-xl bg-card border border-border space-y-2 sm:space-y-3">
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">Product</span>
+                      <span className="font-medium text-card-foreground">{batchData.productType}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-sm text-muted-foreground">Exporter</span>
-                      <span className="text-sm font-medium text-card-foreground">{batchData.exporterName}</span>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">Exporter</span>
+                      <span className="font-medium text-card-foreground truncate ml-2">{batchData.exporterName}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-sm text-muted-foreground">Quantity</span>
-                      <span className="text-sm font-medium text-card-foreground">{batchData.quantity}</span>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">Quantity</span>
+                      <span className="font-medium text-card-foreground">{batchData.quantity}</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-sm text-muted-foreground">Origin</span>
-                      <span className="text-sm font-medium text-card-foreground">{batchData.farmLocation}</span>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">Origin</span>
+                      <span className="font-medium text-card-foreground truncate ml-2">{batchData.farmLocation}</span>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3 p-4 rounded-xl bg-card border border-border">
-                    <Building className="h-5 w-5 text-primary mt-0.5" />
-                    <div>
+                  <div className="flex items-start gap-3 p-3 sm:p-4 rounded-xl bg-card border border-border">
+                    <Building className="h-4 w-4 sm:h-5 sm:w-5 text-primary mt-0.5 flex-shrink-0" />
+                    <div className="min-w-0">
                       <p className="text-xs text-muted-foreground">Issuer / DID</p>
                       <p className="font-semibold text-card-foreground text-xs break-all">{certificateData.vcData.issuer}</p>
                     </div>
@@ -181,8 +181,8 @@ export default function Verify() {
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 p-4 rounded-xl bg-card border border-border mt-4">
-                <Calendar className="h-5 w-5 text-primary mt-0.5" />
+              <div className="flex items-start gap-3 p-3 sm:p-4 rounded-xl bg-card border border-border mt-4">
+                <Calendar className="h-4 w-4 sm:h-5 sm:w-5 text-primary mt-0.5 flex-shrink-0" />
                 <div>
                   <p className="text-xs text-muted-foreground">Issue Date</p>
                   <p className="font-semibold text-card-foreground">{new Date(certificateData.issuedAt).toLocaleDateString()}</p>
@@ -190,9 +190,9 @@ export default function Verify() {
               </div>
 
               {inspection && (
-                <div className="p-4 rounded-xl bg-card border border-border mt-4">
+                <div className="p-3 sm:p-4 rounded-xl bg-card border border-border mt-4">
                   <p className="text-sm font-medium text-card-foreground mb-3">Inspection Results</p>
-                  <div className="grid grid-cols-2 gap-3 text-sm">
+                  <div className="grid grid-cols-2 gap-2 sm:gap-3 text-xs sm:text-sm">
                     <div>
                       <span className="text-muted-foreground">Moisture:</span>
                       <span className="ml-2 font-medium text-card-foreground">{inspection.moisture}%</span>
@@ -209,9 +209,9 @@ export default function Verify() {
                 </div>
               )}
 
-              <div className="flex justify-between items-center pt-4">
+              <div className="flex flex-col sm:flex-row justify-between items-center gap-3 pt-4">
                 <StatusBadge status={certificateData.status} />
-                <Button variant="outline" size="sm">
+                <Button variant="outline" size="sm" className="w-full sm:w-auto">
                   Download Full Report
                 </Button>
               </div>
@@ -219,19 +219,19 @@ export default function Verify() {
           )}
 
           {verificationResult === 'invalid' && (
-            <div className="rounded-2xl border border-destructive/30 bg-destructive/5 p-8 animate-fade-in">
+            <div className="rounded-2xl border border-destructive/30 bg-destructive/5 p-6 sm:p-8 animate-fade-in">
               <div className="flex items-center gap-3">
-                <div className="h-12 w-12 rounded-full bg-destructive/20 flex items-center justify-center">
-                  <XCircle className="h-6 w-6 text-destructive" />
+                <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-destructive/20 flex items-center justify-center flex-shrink-0">
+                  <XCircle className="h-5 w-5 sm:h-6 sm:w-6 text-destructive" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-foreground">Verification Failed</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <h3 className="text-lg sm:text-xl font-semibold text-foreground">Verification Failed</h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground">
                     No valid certificate found. This may be fake or revoked.
                   </p>
                 </div>
               </div>
-              <p className="mt-4 text-sm text-muted-foreground">
+              <p className="mt-4 text-xs sm:text-sm text-muted-foreground">
                 If you believe this is an error, please contact support or try with certificate ID: <strong>CERT-001</strong>
               </p>
             </div>
