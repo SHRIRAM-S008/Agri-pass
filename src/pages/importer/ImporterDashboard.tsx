@@ -63,14 +63,14 @@ export default function ImporterDashboard() {
 
           <div className="mt-6 grid sm:grid-cols-2 gap-4">
             <Link to="/importer/scan">
-              <Button variant="outline" className="gap-2 h-20 flex-col w-full">
+              <Button variant="outline" className="gap-2 h-auto py-8 flex-col w-full">
                 <QrCode className="h-6 w-6" />
-                <span>{t('scanQRCode')}</span>
+                <span className="text-base font-medium">{t('scanQRCode')}</span>
               </Button>
             </Link>
-            <Button variant="outline" className="gap-2 h-20 flex-col">
+            <Button variant="outline" className="gap-2 h-auto py-8 flex-col">
               <Upload className="h-6 w-6" />
-              <span>{t('uploadVCFile')}</span>
+              <span className="text-base font-medium">{t('uploadVCFile')}</span>
             </Button>
           </div>
         </div>

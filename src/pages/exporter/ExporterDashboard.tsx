@@ -40,13 +40,13 @@ export default function ExporterDashboard() {
             <p className="text-sm sm:text-base text-muted-foreground">{t('welcomeBack')}</p>
           </div>
           <Link to="/exporter/submit">
-            <Button className="gap-2 w-full sm:w-auto">
+            <Button className="gap-2 w-full sm:w-auto h-auto py-4 sm:py-2">
               <Plus className="h-4 w-4" /> {t('submitNewBatch')}
             </Button>
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           <StatCard
             title={t('totalBatches')}
             value={stats.totalBatches}
@@ -88,7 +88,7 @@ export default function ExporterDashboard() {
                   <div className="p-4 rounded-lg border border-border bg-muted/30 hover:bg-muted/50 transition-colors">
                     <div className="flex items-start justify-between mb-2">
                       <div className="flex-1 min-w-0">
-                        <p className="font-medium text-primary truncate">{batch.id}</p>
+                        <p className="font-medium text-primary break-all">{batch.id}</p>
                         <p className="text-sm text-card-foreground">{batch.productType}</p>
                       </div>
                       <StatusBadge status={batch.status} />

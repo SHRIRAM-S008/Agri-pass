@@ -35,13 +35,13 @@ export default function AdminDashboard() {
 
   return (
     <DashboardLayout>
-      <div className="space-y-8">
+      <div className="space-y-6 sm:space-y-8">
         <div>
           <h1 className="text-2xl font-bold text-foreground">{t('adminDashboard')}</h1>
           <p className="text-muted-foreground">{t('welcomeBack')}</p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <StatCard
             title={t('totalExporters')}
             value={stats.totalExporters}
@@ -81,7 +81,7 @@ export default function AdminDashboard() {
                 batches.slice(0, 4).map((batch) => (
                   <div key={batch.id} className="flex items-center justify-between p-3 rounded-lg bg-muted/50 gap-2">
                     <Link to={`/admin/batches/${batch.id}`} className="min-w-0 flex-1 hover:bg-muted p-1 -m-1 rounded transition-colors block">
-                      <p className="font-medium text-card-foreground truncate">{batch.id}</p>
+                      <p className="font-medium text-card-foreground break-all">{batch.id}</p>
                       <p className="text-sm text-muted-foreground truncate">{batch.exporterName}</p>
                     </Link>
                     <StatusBadge status={batch.status} />
