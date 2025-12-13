@@ -78,7 +78,7 @@ export const inji = {
 
             // Fallback: Generate mock response for development
             console.warn('⚠️ Using fallback mock VC generation');
-            return generateMockCertifyResponse(vcPayload);
+            return await generateMockCertifyResponse(vcPayload);
         }
     },
 
@@ -134,10 +134,12 @@ export const inji = {
     }
 };
 
+import QRCode from 'qrcode';
+
 /**
  * Fallback mock VC generation for development when Inji Certify is unavailable
  */
-function generateMockCertifyResponse(vcPayload: any): InjiCertifyResponse {
+async function generateMockCertifyResponse(vcPayload: any): Promise<InjiCertifyResponse> {
     const mockVC: InjiVC = {
         ...vcPayload,
         proof: {
@@ -149,8 +151,19 @@ function generateMockCertifyResponse(vcPayload: any): InjiCertifyResponse {
         }
     };
 
-    // Generate a mock QR code (base64 placeholder)
-    const mockQR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+    // Generate a REAL mock QR code
+    let mockQR = '';
+    try {
+        mockQR = await QRCode.toDataURL(JSON.stringify(mockVC), {
+            errorCorrectionLevel: 'M',
+            margin: 4,
+            width: 400
+        });
+    } catch (e) {
+        console.error("Failed to generate mock QR", e);
+        // Fallback to empty if fails, but QRCode lib should work
+        mockQR = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==';
+    }
 
     return {
         vc: mockVC,

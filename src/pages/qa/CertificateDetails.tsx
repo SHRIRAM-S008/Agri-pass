@@ -4,9 +4,11 @@ import { DashboardLayout } from '@/components/layout/DashboardLayout';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { storage, Certificate, Batch } from '@/lib/storage';
-import { ArrowLeft, Shield, CheckCircle, XCircle, Clock, FileText } from 'lucide-react';
+import { ArrowLeft, Shield, CheckCircle, XCircle, Clock, FileText, Download } from 'lucide-react';
 import { toast } from 'sonner';
 import QRCode from 'react-qr-code';
+import { generateProfessionalPDF } from '@/lib/pdfGenerator';
+import { encodePixelPass } from '@/lib/pixelpass';
 
 export default function QACertificateDetails() {
   const { id } = useParams();
@@ -65,6 +67,38 @@ export default function QACertificateDetails() {
       </DashboardLayout>
     );
   }
+
+  // Generate PixelPass QR data for PDF
+  const offlineQRData = batch ? encodePixelPass({
+    id: certificate.id,
+    prod: batch.productType,
+    grade: batch.inspectionData?.grade || 'N/A',
+    stat: certificate.status === 'VALID' ? 'V' : 'R',
+    date: certificate.issuedAt
+  }) : '';
+
+  const handleDownloadPDF = async () => {
+    if (!certificate || !batch || !batch.inspectionData) return;
+    try {
+      await generateProfessionalPDF({
+        id: certificate.id,
+        issuedAt: certificate.issuedAt,
+        validUntil: certificate.validUntil,
+        issuer: certificate.vcData.issuer || 'National Quality Agency',
+        productType: batch.productType,
+        quantity: batch.quantity,
+        origin: batch.farmLocation,
+        destination: batch.destinationCountry,
+        grade: batch.inspectionData.grade,
+        moisture: batch.inspectionData.moisture.toString(),
+        qrData: offlineQRData
+      });
+      toast.success('Certificate PDF downloaded successfully');
+    } catch (e) {
+      console.error(e);
+      toast.error('Failed to generate PDF');
+    }
+  };
 
   const handleRevoke = async () => {
     await storage.updateBatchStatus(batch.id, 'REJECTED'); // Or a new status REVOKED
@@ -224,11 +258,19 @@ export default function QACertificateDetails() {
               </CardHeader>
               <CardContent className="flex flex-col items-center">
                 <div className="w-48 h-48 bg-white p-4 rounded-lg flex items-center justify-center mb-4">
-                  <QRCode
-                    value={certificate.id}
-                    size={160}
-                    level="H"
-                  />
+                  {certificate.qrBase64 && !certificate.qrBase64.includes('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==') ? (
+                    <img
+                      src={certificate.qrBase64}
+                      alt="Inji Certificate QR"
+                      className="w-full h-full object-contain"
+                    />
+                  ) : (
+                    <QRCode
+                      value={certificate.id}
+                      size={160}
+                      level="H"
+                    />
+                  )}
                 </div>
               </CardContent>
             </Card>
@@ -249,6 +291,10 @@ export default function QACertificateDetails() {
                     Revoke Certificate
                   </Button>
                 )}
+                <Button variant="outline" className="w-full" onClick={handleDownloadPDF}>
+                  <Download className="h-4 w-4 mr-2" />
+                  Download Certificate (PDF)
+                </Button>
               </CardContent>
             </Card>
           </div>

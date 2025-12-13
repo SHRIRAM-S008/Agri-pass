@@ -86,6 +86,10 @@ export default function InspectionForm() {
       const certifyResponse = await inji.issueCredential(vcPayload);
 
       // 3. Save VC & QR
+      // Upload to Bucket first
+      toast({ title: 'Uploading...', description: 'Saving certificate to storage...' });
+      const publicUrl = await storage.uploadCertificate(certId, certifyResponse.vc);
+
       await storage.saveCertificate({
         id: certId,
         batchId: batch.id,
@@ -93,8 +97,15 @@ export default function InspectionForm() {
         qrBase64: certifyResponse.qr,
         issuedAt: new Date().toISOString(),
         validUntil: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(), // 1 year validity
-        status: 'VALID'
+        status: 'VALID',
+        metadata: {
+          ...batch.inspectionData, // Keep existing inspection data if any
+          storageUrl: publicUrl
+        }
       });
+
+      // 4. Update Batch Status to CERTIFIED
+      await storage.updateBatchStatus(batch.id, 'CERTIFIED');
 
       toast({
         title: 'Certificate Issued!',
@@ -103,9 +114,13 @@ export default function InspectionForm() {
 
       navigate('/qa/certificates');
 
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      toast({ title: 'Error', description: 'Failed to issue certificate', variant: 'destructive' });
+      toast({
+        title: 'Error',
+        description: error.message || 'Failed to issue certificate',
+        variant: 'destructive'
+      });
     } finally {
       setIsSubmitting(false);
     }

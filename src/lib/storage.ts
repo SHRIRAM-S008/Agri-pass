@@ -232,6 +232,39 @@ export const storage = {
 
     // --- Certificates ---
 
+    async uploadCertificate(certId: string, vcData: any): Promise<string | null> {
+        try {
+            const fileName = `${certId}.json`;
+            const blob = new Blob([JSON.stringify(vcData, null, 2)], { type: 'application/json' });
+
+            const { data, error } = await supabase
+                .storage
+                .from('Certificate')
+                .upload(fileName, blob, {
+                    cacheControl: '3600',
+                    upsert: true
+                });
+
+            if (error) {
+                console.error('Error uploading certificate to bucket:', error);
+                toast.error('Failed to upload certificate file: ' + error.message);
+                return null;
+            }
+
+            // Get public URL
+            const { data: { publicUrl } } = supabase
+                .storage
+                .from('Certificate')
+                .getPublicUrl(fileName);
+
+            return publicUrl;
+        } catch (error: any) {
+            console.error('Exception uploading certificate:', error);
+            toast.error('Error uploading certificate file');
+            return null;
+        }
+    },
+
     async saveCertificate(cert: Certificate) {
         // Compute Hash before saving
         // Hash critical fields: id + batchId + status + issuedAt
@@ -258,7 +291,8 @@ export const storage = {
 
         if (error) {
             console.error('Error saving certificate:', error);
-            toast.error('Failed to save certificate');
+            toast.error('Failed to save certificate: ' + error.message);
+            throw error;
         } else {
             this.createAuditLog({
                 action: 'Certificate Issued',

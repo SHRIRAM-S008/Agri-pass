@@ -64,7 +64,7 @@ export function CertificateStamp({
 
           {/* Issuer (abbreviated) */}
           <span className="text-[8px] text-muted-foreground text-center mt-1 leading-tight">
-            {issuer.split(' ').slice(0, 2).join(' ')}
+            {(issuer || '').split(' ').slice(0, 2).join(' ')}
           </span>
 
           {/* Date */}

@@ -123,6 +123,10 @@ export default function IssueCertificate() {
       const certifyResponse = await inji.issueCredential(vcPayload);
 
       // 5. Create certificate record
+      // Upload to Bucket
+      toast.info('Uploading certificate file...');
+      const publicUrl = await storage.uploadCertificate(certId, certifyResponse.vc);
+
       // We use our locally generated QR (qrDataUrl) because it contains the Offline PixelPass data.
       // Inji's QR is likely an online URL or just the default VC structure which might be too large for offline scanning.
       const newCert: Certificate = {
@@ -137,7 +141,8 @@ export default function IssueCertificate() {
           productType: batch.productType,
           notes: additionalNotes,
           injiCertified: true,
-          offlinePayload: offlinePayload // Store raw offline payload for debugging/reverification
+          offlinePayload: offlinePayload, // Store raw offline payload for debugging/reverification
+          storageUrl: publicUrl
         },
         issuer: 'National Agricultural Quality Agency',
         hash: randomId // Will be recalculated

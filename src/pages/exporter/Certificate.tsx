@@ -322,7 +322,7 @@ export default function Certificate() {
               </CardHeader>
               <CardContent className="flex justify-center pb-6">
                 <CertificateStamp
-                  issuer={certificate.vcData.issuer}
+                  issuer={certificate.issuer || 'National Quality Agency'}
                   issuedAt={certificate.issuedAt}
                   validUntil={certificate.vcData.expiration || '2025-12-31'}
                   status={certificate.status.toLowerCase() as 'valid' | 'revoked' | 'expired'}
@@ -346,8 +346,8 @@ export default function Certificate() {
                 </div>
               </CardHeader>
               <CardContent className="flex flex-col items-center p-4 sm:p-6 pt-0">
-                <div className="w-40 h-40 sm:w-48 sm:h-48 bg-background p-3 sm:p-4 rounded-lg flex items-center justify-center border border-border shadow-inner">
-                  {certificate.qrBase64 ? (
+                <div className="w-40 h-40 sm:w-48 sm:h-48 bg-white p-3 sm:p-4 rounded-lg flex items-center justify-center border border-border shadow-inner">
+                  {certificate.qrBase64 && !certificate.qrBase64.includes('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==') ? (
                     // Display Inji-generated QR code
                     <img
                       src={certificate.qrBase64}
@@ -384,6 +384,7 @@ export default function Certificate() {
                   <Download className="h-4 w-4 mr-2" />
                   {t('downloadVC')}
                 </Button>
+
                 <Button variant="outline" className="w-full">
                   <ExternalLink className="h-4 w-4 mr-2" />
                   {t('addToWallet')}
