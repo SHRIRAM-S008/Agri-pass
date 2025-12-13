@@ -63,15 +63,34 @@ export default function IssueCertificate() {
       const validUntil = new Date(issueDate);
       validUntil.setDate(validUntil.getDate() + parseInt(validityDays));
 
-      // Import the VC schema builder
-      const { buildDigitalProductPassport } = await import('@/lib/vcSchema');
+      // Import libraries
+      const { buildDigitalProductPassport, buildMinimalVC } = await import('@/lib/vcSchema');
       const { inji } = await import('@/lib/inji');
+      const QRCodeLib = await import('qrcode'); // Import qrcode library dynamically
 
-      // Build W3C Verifiable Credential payload
+      // 1. Build Offline PixelPass Payload
+      const offlinePayload = encodePixelPass(buildMinimalVC({
+        id: certId,
+        product: batch.productType,
+        grade: inspection.grade,
+        status: 'VALID',
+        issuedAt: issueDate.toISOString(),
+        expiresAt: validUntil.toISOString(),
+        issuer: 'National QA Agency'
+      }));
+
+      // 2. Generate QR Code Image (Data URL)
+      const qrDataUrl = await QRCodeLib.toDataURL(offlinePayload, {
+        errorCorrectionLevel: 'L', // PixelPass uses 'L' for density
+        margin: 4,
+        width: 400
+      });
+
+      // 3. Build Full W3C Verifiable Credential payload (for Inji)
       const vcPayload = buildDigitalProductPassport({
         batchId: batch.id,
         issuerName: 'National Agricultural Quality Agency',
-        issuerDID: 'did:web:agriqcert.app:national-qa',
+        issuerDID: 'did:web:agriqport.app:national-qa',
         issuanceDate: issueDate.toISOString(),
         expirationDate: validUntil.toISOString(),
         exporter: {
@@ -99,11 +118,13 @@ export default function IssueCertificate() {
         destination: batch.destinationCountry
       });
 
-      // Call Inji Certify to issue VC and generate QR
+      // 4. Call Inji Certify (for Full VC and traceability)
       toast.info('Connecting to Inji Certify...');
       const certifyResponse = await inji.issueCredential(vcPayload);
 
-      // Create certificate record with Inji VC and QR
+      // 5. Create certificate record
+      // We use our locally generated QR (qrDataUrl) because it contains the Offline PixelPass data.
+      // Inji's QR is likely an online URL or just the default VC structure which might be too large for offline scanning.
       const newCert: Certificate = {
         id: certId,
         batchId: batch.id,
@@ -111,20 +132,21 @@ export default function IssueCertificate() {
         validUntil: validUntil.toISOString(),
         status: 'VALID',
         vcData: certifyResponse.vc,
-        qrBase64: certifyResponse.qr,
+        qrBase64: qrDataUrl, // Use our offline-compatible QR
         metadata: {
           productType: batch.productType,
           notes: additionalNotes,
-          injiCertified: true
+          injiCertified: true,
+          offlinePayload: offlinePayload // Store raw offline payload for debugging/reverification
         },
         issuer: 'National Agricultural Quality Agency',
-        hash: randomId // Will be recalculated in storage.saveCertificate
+        hash: randomId // Will be recalculated
       };
 
       await storage.saveCertificate(newCert);
       await storage.updateBatchStatus(batch.id, 'CERTIFIED');
 
-      toast.success(`Digital Product Passport ${certId} issued successfully via Inji Certify!`);
+      toast.success(`Digital Product Passport ${certId} issued successfully!`);
       navigate('/qa/certificates');
 
     } catch (e) {

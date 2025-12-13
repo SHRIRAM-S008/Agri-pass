@@ -1,12 +1,12 @@
-# AgriQCert - Digital Quality Certification Platform
+# AgriQPort - Digital Quality Certification Platform
 
 **A Next-Generation Web Platform for Agricultural Supply Chain Transparency**
 
-AgriQCert is a comprehensive web application designed to digitize the agricultural quality certification process. By leveraging **MOSIP Inji Certify** and **W3C Verifiable Credentials**, it creates a tamper-proof bridge between exporters, quality assurance agencies, and importers.
+AgriQPort is a comprehensive web application designed to digitize the agricultural quality certification process. By leveraging **MOSIP Inji Certify** and **W3C Verifiable Credentials**, it creates a tamper-proof bridge between exporters, quality assurance agencies, and importers.
 
 ## 🌟 Website Overview
 
-AgriQCert is built as a modern, responsive Progressive Web App (PWA) that provides a seamless experience across desktop and mobile devices. The platform features role-based access control, ensuring that each stakeholder has a tailored dashboard to manage their specific tasks in the supply chain.
+AgriQPort is built as a modern, responsive Progressive Web App (PWA) that provides a seamless experience across desktop and mobile devices. The platform features role-based access control, ensuring that each stakeholder has a tailored dashboard to manage their specific tasks in the supply chain.
 
 ### 🎨 Key Website Features
 
@@ -21,7 +21,7 @@ AgriQCert is built as a modern, responsive Progressive Web App (PWA) that provid
 
 ---
 
-## � Stakeholder Portals
+## 👥 Stakeholder Portals
 
 ### 1. Exporter Portal
 *Designed for ease of submission and tracking.*
@@ -38,7 +38,7 @@ AgriQCert is built as a modern, responsive Progressive Web App (PWA) that provid
 
 ### 3. Importer / Verification Portal
 *Trust but verify.*
-- **Universal Scanner**: Built-in QR scanner compatible with AgriQCert certificates.
+- **Universal Scanner**: Built-in QR scanner compatible with AgriQPort certificates.
 - **Offline Verification**: Verify simplified certificates even without an internet connection using PixelPass technology.
 - **Detailed Reports**: View comprehensive provenance data, inspection results, and issuer details.
 
@@ -93,14 +93,10 @@ AgriQCert is built as a modern, responsive Progressive Web App (PWA) that provid
    npm run dev
    ```
    The application will launch at `http://localhost:5173`
-
----
-
-## � Mobile features
+## 📱 Mobile features
 The website is designed to feel like a native app on mobile devices:
 - **Bottom Navigation**: Easy thumb-reach navigation on mobile.
 - **Card Views**: Complex data tables automatically transform into readable cards on mobile screens.
 - **No Horizontal Scroll**: Layouts adapt perfectly to any screen width.
-
 ## 📄 License
 MIT License. Built for the future of sustainable trade.

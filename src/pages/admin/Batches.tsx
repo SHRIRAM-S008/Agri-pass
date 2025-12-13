@@ -99,7 +99,11 @@ export default function AdminBatches() {
                   {filteredBatches.map(batch => {
                     return (
                       <TableRow key={batch.id}>
-                        <TableCell className="font-mono text-sm">{batch.id}</TableCell>
+                        <TableCell className="font-mono text-sm">
+                          <Link to={`/admin/batches/${batch.id}`} className="text-primary hover:underline">
+                            {batch.id}
+                          </Link>
+                        </TableCell>
                         <TableCell>{batch.exporterName || 'N/A'}</TableCell>
                         <TableCell>{batch.productType}</TableCell>
                         <TableCell>{batch.quantity}</TableCell>

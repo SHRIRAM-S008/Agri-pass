@@ -39,7 +39,9 @@ import VerificationHistory from "./pages/importer/History";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import Users from "./pages/admin/Users";
 import AdminBatches from "./pages/admin/Batches";
+import AdminBatchDetails from "./pages/admin/BatchDetails";
 import AdminCertificates from "./pages/admin/AdminCertificates";
+import AdminCertificateDetails from "./pages/admin/CertificateDetails";
 import Revocations from "./pages/admin/Revocations";
 import AuditLogs from "./pages/admin/AuditLogs";
 import Settings from "./pages/admin/Settings";
@@ -89,7 +91,9 @@ const App = () => (
               <Route path="/admin" element={<AdminDashboard />} />
               <Route path="/admin/users" element={<Users />} />
               <Route path="/admin/batches" element={<AdminBatches />} />
+              <Route path="/admin/batches/:id" element={<AdminBatchDetails />} />
               <Route path="/admin/certificates" element={<AdminCertificates />} />
+              <Route path="/admin/certificate/:id" element={<AdminCertificateDetails />} />
               <Route path="/admin/revocations" element={<Revocations />} />
               <Route path="/admin/audit" element={<AuditLogs />} />
               <Route path="/admin/settings" element={<Settings />} />

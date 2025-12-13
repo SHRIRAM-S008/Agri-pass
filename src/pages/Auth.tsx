@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useAuth } from '@/contexts/AuthContext';
 import { Header } from '@/components/layout/Header';
-import { Leaf, Mail, Lock, AlertCircle } from 'lucide-react';
+import { Mail, Lock, AlertCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 export default function Auth() {
@@ -85,14 +85,12 @@ export default function Auth() {
         <div className="w-full max-w-md">
           <div className="rounded-2xl border border-border bg-card p-6 sm:p-8 shadow-soft">
             <div className="flex flex-col items-center mb-6 sm:mb-8">
-              <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-xl bg-primary flex items-center justify-center mb-3 sm:mb-4">
-                <Leaf className="h-5 w-5 sm:h-6 sm:w-6 text-primary-foreground" />
-              </div>
+              <img src="/AgriQPort.svg" alt="AgriQPort Logo" className="h-10 w-10 sm:h-12 sm:w-12 mb-3 sm:mb-4" />
               <h1 className="text-xl sm:text-2xl font-bold text-card-foreground">
                 {isLogin ? 'Welcome Back' : 'Create Account'}
               </h1>
               <p className="text-sm text-muted-foreground mt-1 text-center">
-                {isLogin ? 'Sign in to your AgriQCert account' : 'Get started with AgriQCert'}
+                {isLogin ? 'Sign in to your AgriQPort account' : 'Get started with AgriQPort'}
               </p>
             </div>
 

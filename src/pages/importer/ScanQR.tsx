@@ -17,7 +17,17 @@ export default function ScanQR() {
 
   const handleQRScan = (data: string) => {
     toast.success('QR Code detected!');
-    // Try to extract certificate ID from QR data
+
+    // Check if it's an offline PixelPass code
+    // Base45 strings usually don't look like JSON or IDs
+    // We can try to decode it or check for common chars/length
+    if (data.length > 50 && !data.startsWith('http') && !data.startsWith('{')) {
+      // Assume it might be offline data, send to offline verification
+      navigate('/offline-verify', { state: { qrData: data } });
+      return;
+    }
+
+    // Try to extract certificate ID from QR data (legacy/online format)
     try {
       const parsed = JSON.parse(atob(data));
       navigate(`/importer/result/${parsed.id}`);

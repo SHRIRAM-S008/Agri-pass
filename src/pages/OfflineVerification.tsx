@@ -7,10 +7,23 @@ import { Textarea } from '@/components/ui/textarea';
 import { CheckCircle, XCircle, ShieldCheck, WifiOff } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+import { useLocation } from 'react-router-dom';
+
 export default function OfflineVerification() {
-    const [inputData, setInputData] = useState('');
+    const location = useLocation();
+    const [inputData, setInputData] = useState(location.state?.qrData || '');
     const [result, setResult] = useState<any>(null);
     const [error, setError] = useState('');
+
+    // Auto-verify if data is present on load
+    useState(() => {
+        if (location.state?.qrData) {
+            try {
+                const decoded = decodePixelPass(location.state.qrData);
+                if (decoded) setResult(decoded);
+            } catch { }
+        }
+    });
 
     const handleVerify = () => {
         setError('');

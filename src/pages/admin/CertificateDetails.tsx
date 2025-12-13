@@ -8,7 +8,7 @@ import { ArrowLeft, Shield, CheckCircle, XCircle, Clock, FileText } from 'lucide
 import { toast } from 'sonner';
 import QRCode from 'react-qr-code';
 
-export default function QACertificateDetails() {
+export default function AdminCertificateDetails() {
   const { id } = useParams();
   const [certificate, setCertificate] = useState<Certificate | undefined>(undefined);
   const [batch, setBatch] = useState<Batch | undefined>(undefined);
@@ -58,7 +58,7 @@ export default function QACertificateDetails() {
       <DashboardLayout>
         <div className="text-center py-12">
           <h2 className="text-xl font-semibold">Certificate not found</h2>
-          <Link to="/qa/certificates" className="text-primary hover:underline mt-2 inline-block">
+          <Link to="/admin/certificates" className="text-primary hover:underline mt-2 inline-block">
             Back to Certificates
           </Link>
         </div>
@@ -89,7 +89,7 @@ export default function QACertificateDetails() {
     <DashboardLayout>
       <div className="space-y-6">
         <div className="flex items-center gap-4">
-          <Link to="/qa/certificates">
+          <Link to="/admin/certificates">
             <Button variant="ghost" size="icon">
               <ArrowLeft className="h-5 w-5" />
             </Button>
@@ -164,31 +164,6 @@ export default function QACertificateDetails() {
                     <p className="font-mono text-xs truncate">{certificate.id}</p>
                   </div>
                 </div>
-
-                {/* Extended Inspection Details */}
-                {inspection && (
-                  <div className="pt-4 border-t border-border">
-                    <h3 className="font-semibold mb-3">Detailed Inspection Report</h3>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-                      <div>
-                        <p className="text-muted-foreground">Inspector</p>
-                        <p className="font-medium">{inspection.inspectorName || inspection.inspectorId}</p>
-                      </div>
-                      <div>
-                        <p className="text-muted-foreground">Location</p>
-                        <p className="font-medium">{inspection.inspectionLocation || 'N/A'}</p>
-                      </div>
-                      <div>
-                        <p className="text-muted-foreground">Sample ID</p>
-                        <p className="font-medium">{inspection.sampleId || 'N/A'}</p>
-                      </div>
-                      <div>
-                        <p className="text-muted-foreground">Foreign Matter</p>
-                        <p className="font-medium">{inspection.foreignMatter ? `${inspection.foreignMatter}%` : 'N/A'}</p>
-                      </div>
-                    </div>
-                  </div>
-                )}
               </CardContent>
             </Card>
 

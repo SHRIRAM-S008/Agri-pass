@@ -25,11 +25,13 @@ export default function Certificate() {
   const [batch, setBatch] = useState<Batch | undefined>(undefined);
 
   /* Tamper Detection State - Must be declared before any conditional returns */
+  const [loading, setLoading] = useState(true);
   const [isTampered, setIsTampered] = useState(false);
   const [computedHash, setComputedHash] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       if (id) {
         try {
           const cert = await storage.getCertificate(id);
@@ -43,7 +45,11 @@ export default function Certificate() {
           }
         } catch (error) {
           console.error("Failed to fetch certificate data", error);
+        } finally {
+          setLoading(false);
         }
+      } else {
+        setLoading(false);
       }
     };
     fetchData();
@@ -67,6 +73,16 @@ export default function Certificate() {
   }, [certificate]);
 
   const inspection = batch?.inspectionData;
+
+  if (loading) {
+    return (
+      <DashboardLayout>
+        <div className="flex justify-center items-center h-screen">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+        </div>
+      </DashboardLayout>
+    );
+  }
 
   if (!certificate || !batch) {
     return (
@@ -140,7 +156,7 @@ export default function Certificate() {
           <CardContent className="pt-6 pb-8 px-4 sm:px-8 overflow-x-auto">
             <div className="min-w-[300px]">
               <BatchTimeline
-                status="certified"
+                status={batch.status.toLowerCase() as any}
                 submittedAt={batch.submittedAt}
                 inspectedAt={inspection?.inspectedAt}
                 certifiedAt={certificate.issuedAt}

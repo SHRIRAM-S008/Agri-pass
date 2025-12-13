@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
-import { Leaf, LogOut, User, Menu, X } from 'lucide-react';
+import { LogOut, User, Menu, X } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -40,10 +40,8 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 sm:h-16 items-center justify-between px-4 sm:px-6">
         <Link to={isAuthenticated ? getDashboardPath() : '/'} className="flex items-center gap-2">
-          <div className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg bg-primary">
-            <Leaf className="h-4 w-4 sm:h-5 sm:w-5 text-primary-foreground" />
-          </div>
-          <span className="text-lg sm:text-xl font-semibold text-foreground">AgriQCert</span>
+          <img src="/AgriQPort.svg" alt="AgriQPort Logo" className="h-8 w-8 sm:h-9 sm:w-9" />
+          <span className="text-lg sm:text-xl font-semibold text-foreground">AgriQPort</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -105,10 +103,8 @@ export function Header() {
             <SheetContent side="right" className="w-[280px] sm:w-[350px]">
               <SheetHeader>
                 <SheetTitle className="flex items-center gap-2">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                    <Leaf className="h-4 w-4 text-primary-foreground" />
-                  </div>
-                  AgriQCert
+                  <img src="/AgriQPort.svg" alt="AgriQPort Logo" className="h-8 w-8" />
+                  AgriQPort
                 </SheetTitle>
               </SheetHeader>
               <div className="mt-6 flex flex-col gap-3">

@@ -579,19 +579,13 @@ export const translations = {
     certificateIntact: 'சான்றிதழ் ஒருமைப்பாடு உள்ளது',
     simulateTamper: 'சேதாரத்தை உருவகப்படுத்து',
     resetTamper: 'மீட்டமை',
-
-    // Offline
     offlineMode: 'ஆஃப்லைன் முறை',
     offlineVerifyDesc: 'இணையம் இல்லாமல் அடிப்படை சரிபார்ப்பு கிடைக்கும்',
     offlineReady: 'ஆஃப்லைன் தயார்',
-
-    // Users
     users: 'பயனர்கள்',
     manageUsers: 'பயனர்களை நிர்வகி',
     totalExporters: 'மொத்த ஏற்றுமதியாளர்கள்',
     qaAgencies: 'QA நிறுவனங்கள்',
-
-    // Admin
     revocations: 'திரும்பப்பெறுதல்கள்',
     viewRevocations: 'திரும்பப்பெறுதல்கள் காண்க',
     auditLogs: 'தணிக்கை பதிவுகள்',

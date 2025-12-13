@@ -44,7 +44,11 @@ export default function InspectionRequests() {
               <tbody>
                 {pendingBatches.map((batch) => (
                   <tr key={batch.id} className="border-t border-border hover:bg-muted/30 transition-colors">
-                    <td className="py-4 px-4 font-medium text-card-foreground">{batch.id}</td>
+                    <td className="py-4 px-4 font-medium text-card-foreground">
+                      <Link to={`/qa/inspection/${batch.id}`} className="hover:underline text-primary">
+                        {batch.id}
+                      </Link>
+                    </td>
                     <td className="py-4 px-4 text-card-foreground">{batch.exporterName}</td>
                     <td className="py-4 px-4 text-card-foreground">{batch.productType}</td>
                     <td className="py-4 px-4 text-muted-foreground">{batch.quantity}</td>
@@ -54,9 +58,11 @@ export default function InspectionRequests() {
                     </td>
                     <td className="py-4 px-4">
                       <div className="flex items-center gap-2">
-                        <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
-                          <Eye className="h-4 w-4" />
-                        </Button>
+                        <Link to={`/qa/inspection/${batch.id}`}>
+                          <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                            <Eye className="h-4 w-4" />
+                          </Button>
+                        </Link>
                         <Link to={`/qa/inspect/${batch.id}`}>
                           <Button size="sm" className="gap-1">
                             <ClipboardCheck className="h-4 w-4" />

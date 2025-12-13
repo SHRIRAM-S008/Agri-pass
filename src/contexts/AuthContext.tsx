@@ -45,7 +45,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       email: 'admin@demo.com',
       name: 'Admin Demo',
       role: 'admin',
-      company: 'AgriQCert'
+      company: 'AgriQPort'
     }
   ];
 

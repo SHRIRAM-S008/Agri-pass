@@ -15,8 +15,8 @@ export default defineConfig(({ mode }) => ({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
       manifest: {
-        name: 'AgriQcert Importer Verification',
-        short_name: 'AgriQcert',
+        name: 'AgriQPort Importer Verification',
+        short_name: 'AgriQPort',
         description: 'Verify Agri-Pass certificates securely',
         theme_color: '#ffffff',
         icons: [

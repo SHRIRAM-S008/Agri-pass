@@ -20,7 +20,7 @@ export default function Index() {
               {t('digitalProductPassport')}
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground">
-              Trust Every Shipment with <span className="text-primary">AgriQCert</span>
+              Trust Every Shipment with <span className="text-primary">AgriQPort</span>
             </h1>
             <p className="mt-4 sm:mt-6 text-base sm:text-lg text-muted-foreground px-4">
               Transform paper certificates into tamper-proof digital credentials. Exporters submit, QA agencies certify, and importers verify — all in one secure platform.
@@ -36,6 +36,11 @@ export default function Index() {
                   <QrCode className="h-4 w-4" /> {t('verifyCertificate')}
                 </Button>
               </Link>
+              <a href="https://agriqport-app.netlify.app/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                <Button size="lg" variant="secondary" className="gap-2 w-full sm:w-auto">
+                  <Globe className="h-4 w-4" /> Open Web App
+                </Button>
+              </a>
             </div>
           </div>
         </div>
@@ -66,7 +71,7 @@ export default function Index() {
       <section className="py-12 sm:py-16 md:py-20 bg-primary">
         <div className="container text-center px-4">
           <h2 className="text-2xl sm:text-3xl font-bold text-primary-foreground mb-3 sm:mb-4">Ready to Go Digital?</h2>
-          <p className="text-sm sm:text-base text-primary-foreground/80 mb-6 sm:mb-8 max-w-xl mx-auto">Join exporters, QA agencies, and importers already using AgriQCert.</p>
+          <p className="text-sm sm:text-base text-primary-foreground/80 mb-6 sm:mb-8 max-w-xl mx-auto">Join exporters, QA agencies, and importers already using AgriQPort.</p>
           <Link to="/auth">
             <Button size="lg" variant="secondary" className="gap-2">
               {t('signIn')} <ArrowRight className="h-4 w-4" />
@@ -79,9 +84,9 @@ export default function Index() {
         <div className="container flex flex-col md:flex-row items-center justify-between gap-4 px-4">
           <div className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center"><Leaf className="h-4 w-4 text-primary-foreground" /></div>
-            <span className="font-semibold text-foreground">AgriQCert</span>
+            <span className="font-semibold text-foreground">AgriQPort</span>
           </div>
-          <p className="text-xs sm:text-sm text-muted-foreground text-center">© 2024 AgriQCert. Digital certificates for a trustworthy supply chain.</p>
+          <p className="text-xs sm:text-sm text-muted-foreground text-center">© 2024 AgriQPort. Digital certificates for a trustworthy supply chain.</p>
         </div>
       </footer>
     </div>

@@ -176,10 +176,18 @@ export default function InspectionDetails() {
           <Button onClick={() => navigate(`/qa/inspect/${batch.id}`)}>
             Accept & Start Inspection
           </Button>
-          <Button variant="outline">
+          <Button variant="outline" onClick={() => {
+            // In a real app, this would open a dialog to send a message to the exporter
+            alert("Feature coming soon: Request information from Exporter " + exporter?.name);
+          }}>
             Request More Information
           </Button>
-          <Button variant="destructive">
+          <Button variant="destructive" onClick={async () => {
+            if (confirm("Are you sure you want to reject this inspection request?")) {
+              await storage.updateBatchStatus(batch.id, 'REJECTED');
+              navigate('/qa/requests');
+            }
+          }}>
             Reject Request
           </Button>
         </div>

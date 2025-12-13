@@ -41,7 +41,9 @@ export default function BatchList() {
             <div key={batch.id} className="rounded-xl border border-border bg-card p-4 space-y-3">
               <div className="flex items-start justify-between">
                 <div>
-                  <h3 className="font-semibold text-card-foreground">{batch.productType}</h3>
+                  <Link to={`/exporter/batches/${batch.id}`}>
+                    <h3 className="font-semibold text-card-foreground hover:text-primary transition-colors">{batch.productType}</h3>
+                  </Link>
                   <p className="text-xs text-muted-foreground font-mono mt-1">{batch.id}</p>
                 </div>
                 <StatusBadge status={batch.status} />
@@ -91,7 +93,9 @@ export default function BatchList() {
                 {batches.map((batch) => (
                   <tr key={batch.id} className="border-t border-border hover:bg-muted/30 transition-colors">
                     <td className="py-4 px-4">
-                      <span className="font-medium text-card-foreground">{batch.id}</span>
+                      <Link to={`/exporter/batches/${batch.id}`} className="font-medium text-primary hover:underline">
+                        {batch.id}
+                      </Link>
                     </td>
                     <td className="py-4 px-4 text-card-foreground">{batch.productType}</td>
                     <td className="py-4 px-4 text-muted-foreground">{batch.quantity}</td>

@@ -46,7 +46,7 @@ export const buildDigitalProductPassport = (opts: DPPOptions) => {
     const expirationDate = opts.expirationDate ??
         new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(); // 1 year default
 
-    const issuerDID = opts.issuerDID ?? `did:web:agriqcert.app:${opts.issuerName.toLowerCase().replace(/\s+/g, '-')}`;
+    const issuerDID = opts.issuerDID ?? `did:web:agriqport.app:${opts.issuerName.toLowerCase().replace(/\s+/g, '-')}`;
     const subjectDID = `did:web:exporter.app:${opts.exporter.name.toLowerCase().replace(/\s+/g, '-')}`;
 
     return {

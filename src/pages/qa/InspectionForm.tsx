@@ -20,11 +20,15 @@ export default function InspectionForm() {
 
   // Form State
   const [moisture, setMoisture] = useState('');
+  const [foreignMatter, setForeignMatter] = useState('');
   const [pesticideLevel, setPesticideLevel] = useState<InspectionData['pesticideLevel']>('Safe');
   const [heavyMetal, setHeavyMetal] = useState<InspectionData['heavyMetalTest']>('Pass');
   const [isoCode, setIsoCode] = useState('');
   const [grade, setGrade] = useState('');
   const [notes, setNotes] = useState('');
+  const [inspectorName, setInspectorName] = useState('');
+  const [sampleId, setSampleId] = useState('');
+  const [inspectionLocation, setInspectionLocation] = useState('');
 
   useEffect(() => {
     const fetchBatch = async () => {
@@ -54,9 +58,13 @@ export default function InspectionForm() {
       const inspectionData: InspectionData = {
         grade: grade,
         moisture: parseFloat(moisture),
+        foreignMatter: foreignMatter ? parseFloat(foreignMatter) : undefined,
         pesticideLevel: pesticideLevel,
         heavyMetalTest: heavyMetal,
         inspectorId: 'QA-AGENT-001',
+        inspectorName: inspectorName,
+        sampleId: sampleId,
+        inspectionLocation: inspectionLocation,
         inspectedAt: new Date().toISOString(),
         notes: notes,
         isoCode: isoCode
@@ -68,18 +76,21 @@ export default function InspectionForm() {
       // 2. Request VC from Inji
       toast({ title: 'Connecting to Inji Certify...', description: 'Requesting Verifiable Credential...' });
 
+      const certId = crypto.randomUUID();
       const vcPayload = {
+        id: certId,
         ...batch,
         ...inspectionData
       };
 
-      const vc = await inji.issueCredential(vcPayload);
+      const certifyResponse = await inji.issueCredential(vcPayload);
 
       // 3. Save VC & QR
       await storage.saveCertificate({
-        id: vc.id, // Use the ID returned by Inji (simulated) or generate one
+        id: certId,
         batchId: batch.id,
-        vcData: vc,
+        vcData: certifyResponse.vc,
+        qrBase64: certifyResponse.qr,
         issuedAt: new Date().toISOString(),
         validUntil: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(), // 1 year validity
         status: 'VALID'
@@ -87,7 +98,7 @@ export default function InspectionForm() {
 
       toast({
         title: 'Certificate Issued!',
-        description: `VC ID: ${vc.id} has been cryptographically signed.`,
+        description: `VC ID: ${certifyResponse.vc.id} has been cryptographically signed.`,
       });
 
       navigate('/qa/certificates');
@@ -136,6 +147,45 @@ export default function InspectionForm() {
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="rounded-xl border border-border bg-card p-6 space-y-4">
             <h2 className="font-semibold text-card-foreground flex items-center gap-2">
+              <FileText className="h-5 w-5 text-primary" />
+              Inspection Details
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="inspectorName">Inspector Name</Label>
+                <Input
+                  id="inspectorName"
+                  placeholder="e.g. John Doe"
+                  required
+                  value={inspectorName}
+                  onChange={(e) => setInspectorName(e.target.value)}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="sampleId">Sample ID</Label>
+                <Input
+                  id="sampleId"
+                  placeholder="e.g. SMP-2023-001"
+                  required
+                  value={sampleId}
+                  onChange={(e) => setSampleId(e.target.value)}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="location">Inspection Location</Label>
+                <Input
+                  id="location"
+                  placeholder="e.g. Warehouse A, Zone 3"
+                  required
+                  value={inspectionLocation}
+                  onChange={(e) => setInspectionLocation(e.target.value)}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-border bg-card p-6 space-y-4">
+            <h2 className="font-semibold text-card-foreground flex items-center gap-2">
               <FlaskConical className="h-5 w-5 text-primary" />
               Test Results
             </h2>
@@ -151,6 +201,18 @@ export default function InspectionForm() {
                   required
                   value={moisture}
                   onChange={(e) => setMoisture(e.target.value)}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="foreignMatter">Foreign Matter (%)</Label>
+                <Input
+                  id="foreignMatter"
+                  type="number"
+                  step="0.1"
+                  placeholder="e.g., 0.5"
+                  value={foreignMatter}
+                  onChange={(e) => setForeignMatter(e.target.value)}
                 />
               </div>
 

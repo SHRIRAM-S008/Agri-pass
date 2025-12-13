@@ -50,10 +50,15 @@ export interface InspectionData {
     pesticideLevel: 'Safe' | 'Warning' | 'High';
     heavyMetalTest: 'Pass' | 'Fail';
     inspectorId: string;
+    inspectorName?: string;
+    sampleId?: string;
+    inspectionLocation?: string;
     inspectedAt: string;
     notes?: string;
     isoCode: string;
     comments?: string; // Added for compatibility
+    foreignMatter?: number; // percentage
+    defects?: string;
 }
 
 export interface Certificate {

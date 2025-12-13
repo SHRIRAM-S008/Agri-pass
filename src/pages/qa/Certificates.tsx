@@ -67,7 +67,11 @@ export default function QACertificates() {
                     const batch = batches.find(b => b.id === cert.batchId);
                     return (
                       <TableRow key={cert.id}>
-                        <TableCell className="font-mono text-sm">{cert.id}</TableCell>
+                        <TableCell className="font-mono text-sm">
+                          <Link to={`/qa/certificate/${cert.id}`} className="hover:underline text-primary">
+                            {cert.id}
+                          </Link>
+                        </TableCell>
                         <TableCell>{batch?.exporterName || 'N/A'}</TableCell>
                         <TableCell>{batch?.productType || 'N/A'}</TableCell>
                         <TableCell>{new Date(cert.issuedAt).toLocaleDateString()}</TableCell>

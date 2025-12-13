@@ -10,7 +10,7 @@ import { BatchTimeline } from '@/components/BatchTimeline';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-export default function BatchDetails() {
+export default function AdminBatchDetails() {
   const { id } = useParams();
   const { t } = useLanguage();
   const [batch, setBatch] = useState<Batch | null>(null);
@@ -57,7 +57,7 @@ export default function BatchDetails() {
       <DashboardLayout>
         <div className="text-center py-12">
           <h2 className="text-xl font-semibold">Batch not found</h2>
-          <Link to="/exporter/batches" className="text-primary hover:underline mt-2 inline-block">
+          <Link to="/admin/batches" className="text-primary hover:underline mt-2 inline-block">
             Back to Batches
           </Link>
         </div>
@@ -74,7 +74,7 @@ export default function BatchDetails() {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <Link to="/exporter/batches">
+            <Link to="/admin/batches">
               <Button variant="ghost" size="icon">
                 <ArrowLeft className="h-5 w-5" />
               </Button>
@@ -226,7 +226,7 @@ export default function BatchDetails() {
             </CardHeader>
             <CardContent>
               <div className="flex flex-wrap gap-4">
-                <Link to={`/exporter/certificate/${certificate.id}`}>
+                <Link to={`/admin/certificate/${certificate.id}`}>
                   <Button size="lg" className="shadow-lg">
                     <QrCode className="h-5 w-5 mr-2" />
                     {t('view')} {t('digitalProductPassport')}
